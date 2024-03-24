@@ -1,0 +1,24 @@
+$device-mobile-portrait: 576px; // Mobile phones in portrait mode
+$device-mobile-landscape: 900px; // Mobile phones in landscape and some tablets
+$device-portable: 1055px; // Tablets and small laptops
+$device-desktop: 1200px; // Normal laptops and computers
+$device-desktop-hd: 1440px;
+$device-desktop-large: 1800px; // Computers with large monitors
+
+@mixin for-phone-only {
+  @media (max-width: ($device-mobile-portrait - 1)) {
+    @content;
+  }
+}
+
+@mixin for-tablet-up {
+  @media only screen and (min-width: 768px) { @content; }
+}
+
+@mixin for-desktop-up {
+  @media only screen and (min-width: 1024px) { @content; }
+}
+
+@mixin for-large-desktop-up {
+  @media only screen and (min-width: 1200px) { @content; }
+}

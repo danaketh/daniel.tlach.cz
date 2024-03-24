@@ -1,0 +1,46 @@
+// Breakpoints
+$xs-breakpoint: 576px;
+$xs-viewport: 100%;
+$sm-breakpoint: 576px;
+$sm-viewport: 510px;
+$md-breakpoint: 768px;
+$md-viewport: 700px;
+$lg-breakpoint: 1024px;
+$lg-viewport: 950px;
+$xl-breakpoint: 1280px;
+$xl-viewport: 1200px;
+$xxl-breakpoint: 1536px;
+$xxl-viewport: 1450px;
+
+// background
+$lightBackground: #fff;
+$darkBackground: #1a1a1a;
+
+// text
+$lightText: #fff;
+$darkText: #1a1a1a;
+
+// Size
+$base-unit: 16; // 16px is our base size for everything
+
+// Colors
+$color-primary: #3d7ef7;
+$color-background: #1a1a1a;
+$color-blog-background: #fff;
+$color-text: #fff;
+$color-blog-text: #1a1a1a;
+$color-link: #ccc;
+$color-link-hover: #fff;
+$color-link-active: $color-primary;
+$color-footer: #1a1a1a;
+
+// Fonts
+$font-normal: 'Overpass Mono', monospace;
+$font-serif: 'Overpass', sans-serif;
+$font-size: $base-unit;
+
+$line-height: $base-unit;
+
+// Grid
+$grid-columns: 12;
+$gutter-width: 24px;

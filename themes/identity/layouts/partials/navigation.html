@@ -1,0 +1,21 @@
+{{ $currentPage := . }}
+{{ if .Site.Menus.main }}
+    <header class="site">
+        <nav role="navigation">
+            <ul class="brand">
+                <li>
+                    <a href="/"><span>Daniel</span> Tlach</a>
+                </li>
+            </ul>
+            <ul class="nav">
+                {{ range .Site.Menus.main.ByWeight }}
+                    <li class="nav-link-{{ .Weight }} {{ if eq .PageRef $currentPage.Params.nav }}active{{ end }}">
+                        <a href="{{ .URL }}">
+                            {{- .Name -}}
+                        </a>
+                    </li>
+                {{ end }}
+            </ul>
+        </nav>
+    </header>
+{{ end }}

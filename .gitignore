@@ -22,3 +22,8 @@ go.work
 
 # Compiled Templ files
 *_templ.go
+
+# Hugo
+public/
+resources/
+.hugo_build.lock

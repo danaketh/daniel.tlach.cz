@@ -1,0 +1,47 @@
+@import "../../abstract/variables";
+@import "../../abstract/helpers";
+
+.job {
+  margin: rem(24) 0 rem(48);
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  h2 {
+    font-size: rem(20);
+    line-height: rem(28);
+    font-weight: bold;
+    margin: 0;
+
+    span {
+      font-weight: normal;
+    }
+  }
+
+  .tech {
+    font-size: rem(14);
+    font-style: italic;
+
+    span {
+      font-style: normal;
+    }
+  }
+
+  p {
+    margin-top: rem(16);
+    margin-bottom: rem(12);
+
+    &:before {
+      content: "·";
+      font-size: rem(18);
+      font-weight: bold;
+      vertical-align: sub;
+      margin-right: rem(8)
+    }
+  }
+}

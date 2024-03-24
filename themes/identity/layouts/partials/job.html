@@ -1,0 +1,21 @@
+<div class="job">
+    <header>
+        <h2>
+            {{ .title }}
+            {{ if .website }}
+                <span>/ <a href="{{ .website }}" rel="noopener">{{ .company | markdownify }}</a></span>
+            {{ else }}
+                <span>/ {{ .company | markdownify }}</span>
+            {{ end }}
+        </h2>
+        <div>{{ .range }}</div>
+    </header>
+
+    {{ if .description }}
+    <p>{{ .description | plainify | safeHTML }}</p>
+    {{ end }}
+
+    {{ if .technology }}
+    <div class="tech"><span>Worked with:</span> {{ .technology | plainify | safeHTML }}</div>
+    {{ end }}
+</div>

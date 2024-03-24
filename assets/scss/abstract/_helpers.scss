@@ -1,0 +1,12 @@
+@function rem($size, $base: $base-unit) {
+  @return calc($size / $base) + 0rem;
+}
+
+// Browser
+@mixin browser($browsers: Mozilla) {
+  @each $browser in $browsers {
+    body.#{$browser} & {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+name = "Identity"
+license = "MIT"
+licenselink = "https://github.com/danaketh/daniel.tlach.cz/LICENSE.md"
+description = "Personal theme for my website"
+source_repo = "git@github.com:danaketh/daniel.tlach.cz.git"
+tags = ["Responsive", "Blog", "Clean", "Tags", "Minimal", "Minimalist", "Simple"]
+features = ["blog"]
+min_version = "0.57.0"
+[author]
+    name = "Daniel Tlach"
+    homepage = "https://daniel.tlach.cz"

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+{{ partial "header.html" . }}
+<body class="theme-dark">
+
+{{ partial "navigation.html" . }}
+
+<main class="container curriculum-vitae">
+    <section role="article">
+        {{ .Content }}
+    </section>
+
+    <section class="cv-block" role="list">
+        {{ range $.Site.Data.jobs.list }}
+            {{ partial "job" . }}
+        {{ end }}
+    </section>
+</main>
+
+{{ partial "footer.html" . }}
+
+</body>
+</html>

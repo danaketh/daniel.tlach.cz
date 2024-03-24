@@ -1,0 +1,168 @@
+@import "../../abstract/variables";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: $lightBackground;
+  color: $darkText;
+  font-family: $font-normal;
+  margin: 0;
+  padding: 0;
+
+  &.theme-dark {
+    background-color: $darkBackground;
+    color: $lightText;
+  }
+}
+
+a {
+  color: $color-link;
+  text-decoration: underline;
+
+  &:hover {
+    color: $color-link-hover;
+    text-decoration: none;
+  }
+}
+
+h1 {
+  font-size: rem(32);
+  line-height: rem(49);
+  margin: 0;
+  font-weight: 600;
+
+  @include for-tablet-up {
+    font-size: rem(36);
+    line-height: rem(46);
+  }
+
+  @include for-desktop-up {
+    font-size: rem(40);
+    line-height: rem(61);
+  }
+}
+
+p {
+  font-size: rem(16);
+  line-height: rem(28);
+  margin: rem(24) 0;
+
+  &.intro {
+    @include for-tablet-up {
+      font-size: rem(18);
+      line-height: rem(32);
+      margin: rem(32) 0;
+    }
+
+    @include for-desktop-up {
+      font-size: rem(24);
+      line-height: rem(40);
+    }
+  }
+}
+
+main {
+  @include flex("1 0 auto");
+  margin: rem(64) rem(32);
+
+  @include for-tablet-up {
+    margin: rem(80) rem(96);
+  }
+
+  @include for-desktop-up {
+    width: 100%;
+    max-width: 960px;
+    margin: rem(128) auto rem(120);
+  }
+}
+
+footer {
+  &.site {
+    flex-shrink: 0;
+    background-color: $color-primary;
+    overflow: auto;
+    color: $color-footer;
+
+    a {
+      color: $color-link-hover;
+    }
+
+    > div {
+      box-sizing: border-box;
+      margin: rem(48) rem(32) rem(32);
+
+      @include for-tablet-up {
+        margin: rem(96) rem(96) rem(32);
+      }
+
+      p {
+        margin: 0;
+
+        &:first-child {
+          @include for-tablet-up {
+            font-size: rem(18);
+            line-height: rem(32);
+          }
+        }
+
+        &:nth-child(2) {
+          margin: rem(80) 0 rem(48);
+        }
+      }
+    }
+  }
+}
+
+.cv-block {
+  position: relative;
+  margin: rem(56+36) 0 0 0;
+
+  @include for-tablet-up {
+    margin: rem(72) 0 0 0;
+  }
+
+  @include for-desktop-up {
+    margin: rem(80) 0 0 0;
+    padding: 0 0 0 rem(164);
+  }
+
+  &::before {
+    position: absolute;
+    display: block;
+    width: 8px;
+    height: 24px;
+    background-color: $color-primary;
+    content: "";
+    top: -36px;
+
+    @include for-tablet-up {
+      top: 6px;
+      width: 24px;
+      height: 8px;
+      left: rem(-96);
+    }
+
+    @include for-desktop-up {
+      top: 6px;
+      width: 24px;
+      height: 8px;
+      left: 0;
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.article-divider {
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: rem(56) 0;
+}

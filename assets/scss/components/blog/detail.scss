@@ -1,0 +1,35 @@
+article {
+  [itemprop="articleBody"] {
+    pre {
+      overflow: auto;
+    }
+
+    .twitter-tweet {
+      display: block;
+      font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+      font-size: rem(12);
+      font-weight: bold;
+      line-height: rem(16);
+      border: 1px solid #eee;
+      border-radius: rem(4);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+      margin: rem(32) rem(24);
+      padding: 0 rem(16) rem(16) rem(16);
+
+      p {
+        font-family: $font-serif;
+        font-size: rem(16);
+        line-height: rem(20);
+        font-weight: normal;
+        margin: rem(16) 0;
+      }
+
+      > a {
+        color: inherit;
+        font-weight: normal;
+        text-decoration: none;
+        outline: 0 none;
+      }
+    }
+  }
+}

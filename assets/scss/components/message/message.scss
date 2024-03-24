@@ -1,0 +1,27 @@
+.message {
+  font-size: rem(16);
+  line-height: rem(28);
+  border: 2px solid;
+  padding: rem(32) rem(24);
+  text-align: center;
+
+  @include for-tablet-up {
+    font-size: rem(18);
+    line-height: rem(30);
+  }
+
+  @include for-desktop-up {
+    font-size: rem(24);
+    line-height: rem(36);
+  }
+
+  &.unavailable {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+
+  &.available {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+}

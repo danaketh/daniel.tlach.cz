@@ -1,0 +1,62 @@
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+    <title>{{ .Page.Title }} | {{ .Site.Title }}</title>
+    <meta property="og:title" content="{{ .Page.Title }} | {{ .Site.Title }}"/>
+    <meta name="twitter:title" content="{{ .Page.Title }} | {{ .Site.Title }}"/>
+
+    {{ with .Description | default .Site.Params.subtitle }}
+        <meta name="description" content="{{ . }}">
+        <meta property="og:description" content="{{ . }}">
+        <meta name="twitter:description" content="{{ . | truncate 200 }}">
+    {{ end }}
+
+    <meta name="author" content="{{ .Site.Params.author }}"/>
+    <meta property="og:site_name" content="{{ .Site.Title }}"/>
+    <meta property="og:url" content="{{ .Permalink }}"/>
+
+    {{ with .Params.thumbnail }}
+        <meta property="og:image" content="{{ . | absURL }}"/>
+        <meta name="twitter:image" content="{{ . | absURL }}"/>
+    {{ end }}
+    <meta name="twitter:card" content="summary"/>
+
+    {{ with .Site.Params.twitter }}
+        <meta name="twitter:site" content="@{{ . }}"/>
+        <meta name="twitter:creator" content="@{{ . }}"/>
+    {{ end }}
+
+    {{ if .IsPage }}
+        <meta property="og:type" content="article"/>
+        {{ with .Site.Params.facebook }}
+            <meta property="og:article:author" content="https://facebook.com/{{ . }}"/>
+        {{ end }}
+    {{ else }}
+        <meta property="og:type" content="website"/>
+    {{ end }}
+
+    <!-- Hugo Version number -->
+    {{ hugo.Generator -}}
+
+    {{- with .Site.Params.favicon }}
+        <link rel='icon' type='image/x-icon' href="{{ . | absURL }}"/>
+    {{- end -}}
+    {{ if eq .RelPermalink "/" }}
+        {{ with .Site.Home.AlternativeOutputFormats.Get "RSS" }}
+            <link href="{{ .Permalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}"/>
+        {{ end }}
+    {{ end }}
+
+    <link rel="canonical" href="{{ .Permalink }}">
+
+    <!-- CSS -->
+    {{ $opts := dict
+            "transpiler" "dartsass"
+            "targetPath" "css/custom.css"
+            "enableSourceMap" (not hugo.IsProduction)
+            "outputStyle" "compressed"
+    }}
+    {{ with resources.Get "scss/build.scss" | toCSS $opts | minify | fingerprint }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+    {{ end }}
+</head>

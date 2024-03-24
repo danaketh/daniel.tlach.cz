@@ -1,0 +1,16 @@
+.categories {
+  text-align: right;
+  margin-top: rem(48);
+
+  select {
+    border: 1px solid #ccc;
+    background-color: #fff;
+    height: rem(48);
+    font-family: $font-normal;
+    font-weight: bold;
+    font-size: rem(16);
+    padding: 0 rem(16);
+    //line-height: rem(24);
+    //text-indent: rem(16);
+  }
+}

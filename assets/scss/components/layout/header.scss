@@ -1,0 +1,68 @@
+@import "../../abstract/variables";
+@import "../../abstract/_helpers.scss";
+
+header {
+  &.site {
+    nav {
+      @include flex("0 0 auto");
+      justify-content: space-between;
+
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        &.brand {
+          background-color: $color-primary;
+          color: $color-text;
+
+          a {
+            display: block;
+            color: $color-link-hover;
+            text-decoration: none;
+            font-size: rem($font-size);
+            line-height: rem(16);
+            font-weight: bold;
+            padding: rem(40) rem(48);
+          }
+
+          span {
+            display: none;
+
+            @include for-tablet-up {
+              display: inline;
+            }
+          }
+        }
+
+        &.nav {
+          @include flex("0 0 auto");
+          align-content: center;
+          margin-right: rem(24);
+        }
+
+        li {
+          &.nav-link-3 { // Contact
+            a {
+              color: darken($color-link, 25%);
+            }
+          }
+
+          &.active {
+            a {
+              text-decoration: none;
+              color: $color-link-active;
+            }
+          }
+
+          a {
+            padding: 0 rem(8);
+            font-weight: 600;
+            font-size: rem(16);
+            line-height: rem(25);
+          }
+        }
+      }
+    }
+  }
+}

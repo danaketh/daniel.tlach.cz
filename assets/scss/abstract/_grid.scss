@@ -1,0 +1,73 @@
+//
+// Flex and Grid helpers
+//
+
+// > Flex
+// =============
+@mixin flex($flex: "0 1 auto") {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: #{$flex};
+}
+
+// > Create grid
+// =============
+@mixin grid($flex: "0 1 auto") {
+  // We start with just a basic layout that will give us the results to some point
+  // but nothings fancy will be going on there
+  width: auto;
+  display: block;
+  box-sizing: border-box;
+  position: relative;
+
+  // If we have the support for flex, we'll switch to it
+  @supports (display: flex) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: unquote($flex);
+  }
+
+  // Safari
+  @include browser(Safari) {
+    //display: -webkit-box;
+    //flex-basis: auto;
+    //-webkit-flex: 0 1 auto;
+    //-webkit-flex-basis: 100%;
+  }
+
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// > Create column of specified width
+// ==================================
+@mixin span($span, $gutter: false) {
+
+  @if ($gutter == false) {
+    $gutter: $gutter-width;
+  }
+
+  // Calculate width
+  $width: unquote((100 / ($grid-columns / $span)) + "%");
+
+  // Base styling
+  float: left;
+  display: block;
+  box-sizing: border-box;
+
+  // Default sizing, just to make everything more or less work
+  width: $width;
+  max-width: $width; // because of the shitty browsers like Safari (ok, only Safari)
+  padding-left: $gutter / 2;
+  padding-right: $gutter / 2;
+
+  // Flex
+  @supports (display: flex) {
+    float: none;
+  }
+}

@@ -1,0 +1,35 @@
+@import "../../abstract/variables";
+
+.container {
+  @media (max-width: $xs-breakpoint) {
+    width: $xs-viewport;
+    max-width: $xs-viewport;
+  }
+
+  @media (min-width: $sm-breakpoint) {
+    max-width: $sm-viewport;
+  }
+
+  @media (min-width: $md-breakpoint) {
+    max-width: $md-viewport;
+  }
+
+  @media (min-width: $lg-breakpoint) {
+    max-width: $lg-viewport;
+  }
+
+  // I don't need the XL+ breakpoints right now
+  /*
+  @media (min-width: $xl-breakpoint) {
+    max-width: $xl-viewport;
+  }
+
+  @media (min-width: $xxl-breakpoint) {
+    max-width: $xxl-viewport;
+  }
+  */
+
+  &.fluid {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,40 @@
+.lego-wishlist {
+  a {
+    color: $color-primary;
+  }
+}
+
+.wishlist {
+  margin-top: rem(32);
+
+  hr {
+    height: 1px;
+    border: 0;
+    border-top: 1px solid $color-link;
+    margin: 0;
+  }
+
+  .no-results {
+    text-align: center;
+    margin: rem(24) 0;
+  }
+}
+
+.header {
+  background-color: $color-background;
+  color: $color-text;
+  font-size: rem(14);
+  line-height: rem(64);
+  height: rem(64);
+  width: 100%;
+  display: grid;
+  $tpl: "2fr 4fr 4fr 2fr";
+  grid-template-columns: #{$tpl};
+  grid-row-gap: 0;
+  grid-column-gap: rem(24);
+
+  .no,
+  .amount {
+    text-align: center;
+  }
+}

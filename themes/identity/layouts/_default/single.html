@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+{{ partial "header.html" . }}
+<body class="blog">
+{{ partial "navigation.html" . }}
+
+<main class="container">
+    <article itemscope itemtype="https://schema.org/NewsArticle">
+
+        <header>
+            <p class="back">
+                <a href="/blog"><span>&lbarr;</span> Back to Blog</a>
+            </p>
+            <h1 itemprop="headline">{{ .Title }}</h1>
+            <div>
+                <time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}">
+                    {{ .Date.Format "January 2, 2006" }}
+                </time>
+                <div class="categories"></div>
+            </div>
+            {{ with .Params.thumbnail }}
+                <img src="{{ . }}" alt="thumbnail" class="p-article__thumbnail">
+            {{ end }}
+        </header>
+
+        <div itemprop="articleBody" class="container">
+            {{ .Content }}
+        </div>
+
+        <footer>
+            <div class="categories"></div>
+        </footer>
+
+    </article>
+
+</main>
+
+{{ partial "footer.html" . }}
+
+</body>
+</html>

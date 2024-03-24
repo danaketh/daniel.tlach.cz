@@ -1,0 +1,113 @@
+// Default styling for the part display is in a row
+.part {
+  font-size: rem(14);
+  width: 100%;
+  display: grid;
+  $tpl: "2fr 4fr 4fr 2fr";
+  grid-template-columns: #{$tpl};
+  grid-row-gap: 0;
+  grid-column-gap: rem(24);
+  padding: rem(16) 0;
+
+  .no {
+    display: flex;
+    align-items: center;
+    font-size: rem(14);
+
+    img {
+      overflow: hidden;
+      width: rem(48);
+      height: rem(48);
+      margin-left: rem(4);
+    }
+
+    span {
+      margin-left: rem(24);
+    }
+  }
+
+  .name {
+    display: flex;
+    align-items: center;
+    font-size: rem(14);
+    line-height: rem(20);
+    font-weight: bold;
+  }
+
+  .color {
+    display: flex;
+    align-items: center;
+
+    .colorStripe {
+      width: rem(8);
+      height: rem(48);
+      border-radius: 2px;
+    }
+
+    .colorCombo {
+      height: rem(48);
+      margin-left: rem(8);
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      background-color: $color-blog-background;
+      border-bottom: 1px solid $color-link;
+
+      &:hover {
+        overflow: visible;
+
+        .list {
+          z-index: 100;
+          box-shadow: 0 2px 16px 0 rgba(0,0,0,.2);
+          right: auto;
+          width: 430px;
+        }
+
+        .vendor {
+          padding: rem(8) rem(16);
+
+          &:first-of-type {
+            padding-top: rem(15);
+          }
+
+          &:last-of-type {
+            padding-bottom: rem(15);
+          }
+        }
+      }
+
+      .list {
+        border: 1px solid $color-link;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        background-color: $color-blog-background;
+      }
+
+      .vendor {
+        padding: rem(15) rem(16);
+        font-size: rem(14);
+        line-height: rem(22);
+        white-space: nowrap;
+
+        .vendorName {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .amount {
+    display: flex;
+    align-items: center;
+    font-size: rem(14);
+    line-height: rem(20);
+    font-weight: bold;
+    text-align: center;
+
+    span {
+      margin: 0 auto;
+    }
+  }
+}
