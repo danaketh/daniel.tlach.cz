@@ -1,6 +1,7 @@
 import {defineConfig} from "tinacms";
 import BlogPost from "./collections/BlogPost";
 import Page from "./collections/Page";
+import Job from "./collections/Job";
 
 const branch = "main";
 
@@ -23,6 +24,7 @@ export default defineConfig({
         collections: [
             BlogPost,
             Page,
+            Job,
         ],
     },
 });
