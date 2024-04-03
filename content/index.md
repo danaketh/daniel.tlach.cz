@@ -1,8 +1,8 @@
-+++
-title = "Curriculum Vitae"
-[params]
-  nav = "about"
-+++
+---
+title: "Curriculum Vitae"
+params:
+  nav: "about"
+---
 
 # Hi, I’m Daniel, and I do stuff!
 
