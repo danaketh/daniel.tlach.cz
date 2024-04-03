@@ -3,6 +3,16 @@ languageCode: "en-us"
 title: "Daniel Tlach"
 theme: "identity"
 
+disableKinds:
+  - taxonomy
+
+params:
+  paginate: 10
+  twitter: "danaketh"
+  github: "danaketh"
+  npm: "danaketh"
+  linkedin: "danieltlach"
+
 menu:
   main:
     - name: "About"
@@ -48,32 +58,7 @@ markup:
     style: "onedark"
     tabWidth: 4
 
-module:
-  imports:
-    - path: github.com/privatemaker/headless-cms
-
 outputs:
   home:
     - HTML
     - RSS
-    - HeadlessCMSConfig
-
-params:
-  paginate: 10
-  twitter: "danaketh"
-  github: "danaketh"
-  npm: "danaketh"
-  linkedin: "danieltlach"
-  headless_cms:
-    engine: "sveltia"
-    site_url: "https://daniel.tlach.cz"
-    backend:
-      name: "github"
-      repo: "danaketh/daniel.tlach.cz"
-    collections:
-      blog:
-        create: true
-        fields:
-          - label: "Title"
-            name: "title"
-            widget: "string"
