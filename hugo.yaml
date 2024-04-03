@@ -1,0 +1,79 @@
+baseURL: "https://daniel.tlach.cz/"
+languageCode: "en-us"
+title: "Daniel Tlach"
+theme: "identity"
+
+menu:
+  main:
+    - name: "About"
+      url: "/"
+      weight: 1
+      pageRef: "about"
+    #- name: "Blog"
+    #  url: "/blog/"
+    #  weight: 2
+    #  pageRef: "blog"
+    - name: "Contact"
+      url: "mailto:daniel@tlach.cz"
+      weight: 3
+
+related:
+  threshold: 80
+  indices:
+    - name: "keywords"
+      weight: 150
+    - name: "author"
+      toLower: true
+      weight: 30
+    - name: "tags"
+      weight: 100
+    - name: "date"
+      weight: 10
+      pattern: "2017"
+
+includeNewer: false
+toLower: false
+
+markup:
+  highlight:
+    anchorLineNos: true
+    codeFences: true
+    guessSyntax: false
+    lineAnchors: ''
+    lineNoStart: 1
+    lineNos: true
+    lineNumbersInTable: false
+    noClasses: true
+    noHl: true
+    style: "onedark"
+    tabWidth: 4
+
+module:
+  imports:
+    - path: github.com/privatemaker/headless-cms
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - HeadlessCMSConfig
+
+params:
+  paginate: 10
+  twitter: "danaketh"
+  github: "danaketh"
+  npm: "danaketh"
+  linkedin: "danieltlach"
+  headless_cms:
+    engine: "sveltia"
+    site_url: "https://daniel.tlach.cz"
+    backend:
+      name: "github"
+      repo: "danaketh/daniel.tlach.cz"
+    collections:
+      blog:
+        create: true
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "string"
