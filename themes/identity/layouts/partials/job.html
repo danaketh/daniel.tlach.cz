@@ -8,14 +8,27 @@
                 <span>/ {{ .company | markdownify }}</span>
             {{ end }}
         </h2>
-        <div>{{ .range }}</div>
+        <div>
+            {{ dateFormat "January 2006" .range.start }}
+            {{ if .range.end }}
+            - {{ dateFormat "January 2006" .range.end }}
+            {{ end }}
+            {{ if .range.current }}
+            - Present
+            {{ end }}
+        </div>
     </header>
 
     {{ if .description }}
     <p>{{ .description | plainify | safeHTML }}</p>
     {{ end }}
 
-    {{ if .technology }}
-    <div class="tech"><span>Worked with:</span> {{ .technology | plainify | safeHTML }}</div>
+    {{ if .technologies }}
+    <div class="tech">
+        <span>Worked with:</span>
+        {{ range sort .technologies "" "asc" }}
+            <span class="badge {{ lower . }}">{{ . }}</span>
+        {{ end }}
+    </div>
     {{ end }}
 </div>
