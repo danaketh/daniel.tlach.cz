@@ -1,0 +1,18 @@
+title: Senior Software Developer (contractor)
+company: QED GROUP a.s.
+website: 'https://www.qedgroup.cz/'
+range:
+  start: 2020-03-01T00:00:00.000Z
+  end: 2024-03-01T00:00:00.000Z
+description: |
+  Development of an in-house survey system.
+technologies:
+  - HTMX
+  - Hugo
+  - Svelte
+  - SASS
+  - React
+  - Symfony
+  - PostgreSQL
+  - PHP
+weight: 13

@@ -1,0 +1,13 @@
+title: 'IT Support, Web Developer'
+company: Hobra - Školník s.r.o.
+website: 'https://www.hobra.cz'
+range:
+  start: 2004-10-01T00:00:00.000Z
+  end: 2005-06-01T00:00:00.000Z
+description: >
+  Providing IT support to the employees, taking care of the company IT
+  equipment, developing company's web projects.
+technologies:
+  - Windows
+  - PHP
+weight: 0

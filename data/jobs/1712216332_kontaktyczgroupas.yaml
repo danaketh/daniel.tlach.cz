@@ -1,0 +1,13 @@
+title: Software Developer
+company: Kontakty.cz Group a.s.
+range:
+  start: 2011-02-01T00:00:00.000Z
+  end: 2011-08-01T00:00:00.000Z
+description: |
+  Programming features for the Stavby.cz and Autoservis.cz portals.
+technologies:
+  - MySQL
+  - Twig
+  - Nette
+  - PHP
+weight: 6

@@ -1,0 +1,28 @@
+title: Software Firefighter
+company: Freelancer
+website: 'https://daniel.tlach.cz'
+range:
+  start: 2008-07-01T00:00:00.000Z
+  end: 2024-03-01T00:00:00.000Z
+  current: false
+description: >
+  Over the years I've tried a lot. Worked on e-shops, websites, science
+  projects, gaming tools... That's why I'm now
+
+  aiming for projects that feel interesting and fun or offer the chance to grow
+  and get experience.
+technologies:
+  - Hugo
+  - Gatsby
+  - Rust
+  - ElasticSearch
+  - PostgreSQL
+  - SASS
+  - React
+  - Docker
+  - Symfony
+  - Go
+  - JavaScript
+  - Python
+  - PHP
+weight: 15

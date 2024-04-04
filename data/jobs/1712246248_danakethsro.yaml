@@ -1,0 +1,25 @@
+title: Owner
+company: 'danaketh, s.r.o.'
+range:
+  start: 2017-10-01T00:00:00.000Z
+  current: true
+description: >
+  I've started my own company to offload some of my personal projects elsewhere
+  and keep them under a single roof
+
+  but still separate from my freelance work. Here I do things like building
+  computer networks, computers, server
+
+  management and also work on long-term projects which are also my hobby (mostly
+  a sort of wikipedia about sharks).
+technologies:
+  - PostgreSQL
+  - SASS
+  - React
+  - Docker
+  - Symfony
+  - Go
+  - JavaScript
+  - Python
+  - PHP
+weight: 14

@@ -1,0 +1,25 @@
+title: Senior Web Developer
+company: Instart *acquired by Akamai*
+range:
+  start: 2019-02-01T00:00:00.000Z
+  end: 2020-02-01T00:00:00.000Z
+description: >
+  Startup based in San Francisco, USA.
+
+  I've built and maintained the company website. Built on top of WordPress, I've
+  made a custom theme,
+
+  plugins and blocks for Gutenberg. I've also modified the WordPress to use
+  Symfony and Twig to render
+
+  the public part of the website instead of leaving that to WP itself.
+technologies:
+  - Twig
+  - SASS
+  - React
+  - JavaScript
+  - WP Engine
+  - MySQL
+  - WordPress
+  - PHP
+weight: 12

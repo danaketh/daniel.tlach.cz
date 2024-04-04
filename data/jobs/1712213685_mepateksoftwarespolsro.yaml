@@ -1,0 +1,13 @@
+title: Software Developer
+company: 'MepaTEK Software, spol. s r.o.'
+website: 'https://www.mepatek.cz/'
+range:
+  start: 2010-11-01T00:00:00.000Z
+  end: 2011-01-01T00:00:00.000Z
+description: |
+  Development of the in-house CMS, managing client websites.
+technologies:
+  - MySQL
+  - JavaScript
+  - PHP
+weight: 5

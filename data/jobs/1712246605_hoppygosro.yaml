@@ -1,0 +1,17 @@
+title: Senior Backend Developer
+company: HoppyGo s.r.o.
+website: 'https://www.hoppygo.com/'
+range:
+  start: 2020-10-01T00:00:00.000Z
+  end: 2023-11-01T00:00:00.000Z
+  current: false
+description: >
+  Maintaining existing code and implementing new features for the REST API used
+  by the car-sharing platform apps.
+technologies:
+  - Amazon AWS
+  - PostgreSQL
+  - Docker
+  - Symfony
+  - PHP
+weight: 17
