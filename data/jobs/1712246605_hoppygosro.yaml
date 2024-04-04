@@ -9,6 +9,7 @@ description: >
   Maintaining existing code and implementing new features for the REST API used
   by the car-sharing platform apps.
 technologies:
+  - Redis
   - Amazon AWS
   - PostgreSQL
   - Docker
