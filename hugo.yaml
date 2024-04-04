@@ -2,6 +2,9 @@ baseURL: "https://daniel.tlach.cz/"
 languageCode: "en-us"
 title: "Daniel Tlach"
 theme: "identity"
+enableRobotsTXT: true
+includeNewer: false
+toLower: false
 
 disableKinds:
   - taxonomy
@@ -40,9 +43,6 @@ related:
     - name: "date"
       weight: 10
       pattern: "2017"
-
-includeNewer: false
-toLower: false
 
 markup:
   highlight:
