@@ -67,14 +67,19 @@ const Job: Collection = {
             name: "technologies",
             label: "Technologies",
             list: true,
+        },
+        {
+            type: "number",
+            name: "weight",
+            label: "Weight",
         }
     ],
     ui: {
         filename: {
             readonly: true,
             slugify: (values) => {
-                const date = new Date()
-                return `${date.toISOString().split('T')[0]}_${values?.company?.toLowerCase().replace(/ /g, '-').replace(/\W/g, '')}`
+                const date = Math.floor(new Date().getTime() / 1000);
+                return `${date}_${values?.company?.toLowerCase().replace(/ /g, '-').replace(/\W/g, '')}`
             },
         },
     },
