@@ -1,0 +1,13 @@
+<div class="ide-block">
+    <div class="inner-window">
+        <ul class="ide-tab">
+            <li class="dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </li>
+            <li class="filename">{{ .Get "filename" }}</li>
+        </ul>
+        {{ .Inner | .Page.RenderString }}
+    </div>
+</div>
