@@ -31,5 +31,60 @@ article {
         outline: 0 none;
       }
     }
+
+    .ide-block {
+      border: 1px solid #1a1a1a;
+      border-radius: rem(16);
+
+      .inner-window {
+        border: 1px solid #a1a1a1;
+        border-radius: rem(16);
+        background-color: #282c34;
+
+        .ide-tab {
+          list-style: none;
+          margin: rem(16) 0 rem(8);
+          padding: 0 rem(24);
+          display: grid;
+          align-items: center;
+          grid-gap: 12px;
+          grid-template-columns: 48px 1fr 48px;
+
+          .dots {
+            .dot{
+              width: 12px;
+              height: 12px;
+              background-color: #ccc;
+              border-radius: 50%;
+              display: inline-block;
+              &:nth-child(1){
+                background-color: #ED594A;
+              }
+              &:nth-child(2){
+                background-color: #FDD800;
+              }
+              &:nth-child(3){
+                background-color: #5AC05A;
+              }
+            }
+          }
+
+          .filename {
+            position: relative;
+            color: #abb2bf;
+            padding: 0;
+            text-align: center;
+            font-family: $font-normal;
+            font-weight: bold;
+          }
+        }
+
+        .highlight > pre {
+          margin: 0;
+          border-bottom-left-radius: rem(16);
+          border-bottom-right-radius: rem(16);
+        }
+      }
+    }
   }
 }
