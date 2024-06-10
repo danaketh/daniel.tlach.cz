@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/danaketh/daniel.tlach.cz#readme",
   "dependencies": {
-    "tinacms": "^1.6.3"
+    "tinacms": "^1.6.4"
   },
   "devDependencies": {
     "@tinacms/cli": "^1.5.45",
