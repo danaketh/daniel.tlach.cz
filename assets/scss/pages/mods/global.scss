@@ -1,0 +1,44 @@
+.mods {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-gap: 20px;
+  width: 100%;
+}
+
+.mod {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: rem(12);
+  overflow: hidden;
+  border: 1px solid $color-background;
+
+  img {
+
+  }
+
+  h2 {
+    text-align: center;
+    margin: .5rem 1rem;
+  }
+
+  p {
+    margin: .5rem 1rem;
+  }
+
+  .btn {
+    margin: 1rem;
+    display: block;
+    text-align: center;
+    border: 1px solid $color-background;
+    color: $color-background;
+    padding: 1rem 0;
+    border-radius: rem(8);
+    justify-content: flex-end;
+
+    &:hover {
+      border-color: $color-link-active;
+      color: $color-link-active;
+    }
+  }
+}

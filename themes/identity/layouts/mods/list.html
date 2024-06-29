@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+{{ partial "header.html" . }}
+<body>
+{{ partial "navigation.html" . }}
+
+<main class="container">
+    <section role="list">
+        {{ range $page := (where .Data.Pages "Type" "mods") }}
+            <a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+        {{ end }}
+    </section>
+</main>
+
+{{ partial "footer.html" . }}
+
+</body>
+</html>
