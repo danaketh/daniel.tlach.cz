@@ -5,12 +5,14 @@ range:
   start: 2024-04-01T00:00:00.000Z
   current: true
 description: |
-  Currently learning the ropes...
+  As a part of the Identity team I've been working on providing support to our customers with their Kusto clusters.
+  I've started and participated on a project to improve access governance on Kusto clusters, which included changes
+  like requiring periodical access renewal, or better organization and control over granted permissions. Currently
+  I'm involved in a project which provides a high-level tooling for managing Kusto clusters.
 technologies:
-  - React
-  - Rust
-  - Go
+  - Blazor
   - .NET
-  - C#
   - Azure
+  - Kusto
 weight: 18
+resume: true
