@@ -12,7 +12,7 @@ description: >
   the backend and frontend systems.
 technologies:
   - Redis
-  - Amazon AWS
+  - AWS
   - PostgreSQL
   - Docker
   - Symfony
