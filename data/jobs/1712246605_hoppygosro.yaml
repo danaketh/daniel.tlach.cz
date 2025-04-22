@@ -6,8 +6,10 @@ range:
   end: 2023-11-01T00:00:00.000Z
   current: false
 description: >
-  Maintaining existing code and implementing new features for the REST API used
-  by the car-sharing platform apps.
+  Car-sharing platform in the Czech Republic and Slovakia. I was responsible for the development of the backend system,
+  including the implementation of new features, optimization of existing code, and ensuring the overall performance
+  and scalability of the platform. I worked closely with the frontend team to ensure seamless integration between
+  the backend and frontend systems.
 technologies:
   - Redis
   - Amazon AWS
@@ -16,3 +18,4 @@ technologies:
   - Symfony
   - PHP
 weight: 17
+resume: true
