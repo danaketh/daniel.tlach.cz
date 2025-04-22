@@ -4,19 +4,17 @@ range:
   start: 2015-10-01T00:00:00.000Z
   end: 2019-02-01T00:00:00.000Z
 description: >
-  Startup based in San Francisco, USA.
-
-  As part of the marketing team I've made sure the company website is running
-  smoothly and allows my colleagues
-
-  to communicate all the important information quick and easy.
+  Startup based in San Francisco, USA. As part of the marketing team I was responsible for development
+  of the company website and integration of several marketing tools. Combining both front-end and back-end
+  knowledge I was able to build a customized version of WordPress with several hardening measures, mitigating
+  many of the common security issues.
 technologies:
   - HubSpot
   - SASS
   - React
-  - JavaScript
   - WP Engine
   - MySQL
   - WordPress
   - PHP
 weight: 11
+resume: true
