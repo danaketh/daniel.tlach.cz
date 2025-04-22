@@ -28,11 +28,9 @@ jobs:
         run: go run ./bin/prepare_resume.go
 
       - name: Setup LaTeX and Compile
-        uses: xu-cheng/texlive-action@v3
+        uses: xu-cheng/latex-action@v3
         with:
-          scheme: basic # Or use 'full' if 'basic' misses packages
           root_file: resume/resume.tex
-          enable_cache: true
 
       - name: Create Release and Upload Resume PDF
         uses: softprops/action-gh-release@v2
