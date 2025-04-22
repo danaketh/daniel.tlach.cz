@@ -1,18 +1,18 @@
-title: Senior Software Developer (contractor)
+title: Senior Software Developer
 company: QED GROUP a.s.
 website: 'https://www.qedgroup.cz/'
 range:
   start: 2020-03-01T00:00:00.000Z
   end: 2024-03-01T00:00:00.000Z
 description: |
-  Development of an in-house survey system.
+  I'm developing next version of an in-house survey system, mainly intended for personality tests. I've designed
+  the architecture of the system and implemented the backend in Symfony. The frontend is built with React and SASS.
+  The system is deployed in K8S (Nomad) and uses PostgreSQL as the database.
 technologies:
-  - HTMX
-  - Hugo
-  - Svelte
+  - PHP
   - SASS
   - React
   - Symfony
   - PostgreSQL
-  - PHP
 weight: 13
+resume: true
