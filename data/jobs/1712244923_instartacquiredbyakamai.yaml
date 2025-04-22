@@ -4,22 +4,16 @@ range:
   start: 2019-02-01T00:00:00.000Z
   end: 2020-02-01T00:00:00.000Z
 description: >
-  Startup based in San Francisco, USA.
-
-  I've built and maintained the company website. Built on top of WordPress, I've
-  made a custom theme,
-
-  plugins and blocks for Gutenberg. I've also modified the WordPress to use
-  Symfony and Twig to render
-
-  the public part of the website instead of leaving that to WP itself.
+  Startup based in San Francisco, USA. As part of the marketing team I was responsible for development
+  of the company website and integration of several marketing tools. Combining both front-end and back-end
+  knowledge I was able to build a customized version of WordPress with several hardening measures, mitigating
+  many of the common security issues.
 technologies:
-  - Twig
-  - SASS
   - React
-  - JavaScript
   - WP Engine
   - MySQL
   - WordPress
   - PHP
+  - SASS
 weight: 12
+resume: true
