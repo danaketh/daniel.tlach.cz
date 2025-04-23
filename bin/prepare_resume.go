@@ -76,27 +76,64 @@ func main() {
 		jobs = append(jobs, job)
 	}
 
-	latexContent := generateLatexContent(jobs)
-
-	err = os.WriteFile("resume/experience.tex", []byte(latexContent), 0644)
+	err = os.WriteFile("resume/experience.tex", []byte(generateRegularExperience(jobs)), 0644)
 	if err != nil {
 		log.Fatalf("Failed to write LaTeX file: %v", err)
 	}
 
-	fmt.Println("LaTeX file generated successfully!")
+	err = os.WriteFile("resume/experience_full.tex", []byte(generateFullExperience(jobs)), 0644)
+	if err != nil {
+		log.Fatalf("Failed to write LaTeX file: %v", err)
+	}
+
+	fmt.Println("LaTeX files generated successfully!")
 }
 
 func EscapeLaTeX(s string) string {
 	return latexReplacer.Replace(s)
 }
 
-func generateLatexContent(jobs []Job) string {
+func generateRegularExperience(jobs []Job) string {
 	var sb strings.Builder
 
 	for _, job := range jobs {
 		if !job.Resume {
 			continue // Skip jobs not marked for resume
 		}
+		// Begin entry
+		sb.WriteString("\\entry\n")
+		// Date
+		var endDateDisplay string
+		if job.Dates.Current {
+			endDateDisplay = "Present"
+		} else {
+			endDateDisplay = job.Dates.End.Format("1/2006")
+		}
+		fmt.Fprintf(&sb, "    {%s - %s}\n", job.Dates.Start.Format("1/2006"), endDateDisplay)
+		// Position
+		fmt.Fprintf(&sb, "    {%s}\n", strings.TrimSpace(job.Title))
+		// Company
+		fmt.Fprintf(&sb, "    {%s}\n", strings.TrimSpace(job.Company))
+		// Description and skills
+		fmt.Fprintf(&sb, "    {%s\\\\ ", strings.TrimSpace(EscapeLaTeX(job.Description)))
+		if len(job.Technologies) > 0 {
+			for i, tech := range job.Technologies {
+				fmt.Fprintf(&sb, "\\texttt{%s}", EscapeLaTeX(tech))
+				if i < len(job.Technologies)-1 {
+					sb.WriteString("\\slashsep") // Add the separator and a space
+				}
+			}
+			sb.WriteString("}\n")
+		}
+	}
+
+	return sb.String()
+}
+
+func generateFullExperience(jobs []Job) string {
+	var sb strings.Builder
+
+	for _, job := range jobs {
 		// Begin entry
 		sb.WriteString("\\entry\n")
 		// Date

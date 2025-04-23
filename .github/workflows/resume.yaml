@@ -27,18 +27,35 @@ jobs:
       - name: Run Go preparation script
         run: go run ./bin/prepare_resume.go
 
-      - name: Setup LaTeX and Compile
+      - name: Build regular resume
         uses: xu-cheng/latex-action@v3
         with:
           root_file: resume.tex
           working_directory: resume
 
-      - name: Create Release and Upload Resume PDF
+      - name: Build full resume
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume_full.tex
+          working_directory: resume
+
+      - name: Release regular PDF
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.event.inputs.version }}
-          name: Resume Release ${{ github.event.inputs.version }}
+          name: Resume (regular) ${{ github.event.inputs.version }}
           files: resume/resume.pdf
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Release full PDF
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.version }}
+          name: Resume (full) ${{ github.event.inputs.version }}
+          files: resume/resume_full.pdf
           draft: false
           prerelease: false
         env:

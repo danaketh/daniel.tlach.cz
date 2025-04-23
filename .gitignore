@@ -35,4 +35,5 @@ node_modules
 resume/*.*
 !resume/LICENSE.md
 !resume/resume.tex
+!resume/resume_full.tex
 !resume/developercv.cls
