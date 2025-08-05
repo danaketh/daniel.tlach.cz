@@ -152,6 +152,29 @@ footer {
       left: 0;
     }
   }
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+    margin: rem(8) 0 rem(4) rem(16);
+    font-size: 1rem;
+    line-height: 1.75rem;
+
+    &:before {
+      content: "·";
+      font-size: rem(18);
+      font-weight: bold;
+      vertical-align: baseline;
+      margin: 0 rem(8) 0 rem(-16);
+    }
+  }
+
+  #professional-experience {
+    margin-top: 0;
+  }
 }
 
 .wrapper {

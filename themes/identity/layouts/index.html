@@ -11,6 +11,7 @@
     </section>
 
     <section class="cv-block" role="list">
+        <h2 id="professional-experience">Professional Experience</h2>
         {{ range sort $.Site.Data.jobs "weight" "desc" }}
             {{ partial "job" . }}
         {{ end }}

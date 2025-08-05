@@ -3,26 +3,28 @@ company: Freelancer
 website: 'https://daniel.tlach.cz'
 range:
   start: 2008-07-01T00:00:00.000Z
-  end: 2024-03-01T00:00:00.000Z
-  current: false
+  current: true
 description: >
-  Over the years I've tried a lot. Worked on e-shops, websites, science
-  projects, gaming tools... That's why I'm now
-
-  aiming for projects that feel interesting and fun or offer the chance to grow
-  and get experience.
+  Over the years I've tried a lot. I've worked for small startups (Kontakty, Red Systems, ShopArt),
+  startups that got acquired
+  ([Sapho](https://techcrunch.com/2018/11/15/citrix-pays-200m-to-acquire-sapho-which-connects-legacy-software-with-micro-apps/),
+  [Instart](https://www.akamai.com/newsroom/press-release/akamai-technologies-acquires-customers-and-select-intellectual-property-from-instart)),
+  startups backed by large corporations ([HoppyGo](https://www.hoppygo.cz)), large companies ([ACTUM Digital](https://www.actumdigital.com/),
+  [CEEOR](https://www.web.ceeor.com/), [QED GROUP](https://www.qedgroup.cz/)), and even government organization ([Czech Science Foundation](https://www.gacr.cz/)).
+  
+  I've worked on a wide range of projects, from small websites to large-scale applications, and have gained experience
+  in various technologies and frameworks.
 technologies:
-  - Hugo
-  - Gatsby
+  - Go
+  - PHP
   - Rust
   - ElasticSearch
   - PostgreSQL
-  - SASS
   - React
   - Docker
-  - Symfony
-  - Go
-  - JavaScript
+  - TypeScript
   - Python
-  - PHP
-weight: 15
+  - AWS
+  - Azure
+  - Kubernetes
+weight: 100

@@ -1,13 +1,13 @@
 <div class="job">
     <header>
-        <h2>
+        <h3>
             {{ .title }}
             {{ if .website }}
                 <span>/ <a href="{{ .website }}" rel="noopener">{{ .company | markdownify }}</a></span>
             {{ else }}
                 <span>/ {{ .company | markdownify }}</span>
             {{ end }}
-        </h2>
+        </h3>
         <div>
             {{ dateFormat "January 2006" .range.start }}
             {{ if .range.end }}
@@ -20,7 +20,7 @@
     </header>
 
     {{ if .description }}
-    <p>{{ .description | plainify | safeHTML }}</p>
+    <p>{{ .description | markdownify }}</p>
     {{ end }}
 
     {{ if .technologies }}
