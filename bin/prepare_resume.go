@@ -5,6 +5,7 @@ import (
 	"log"
 	"os" // Import the 'os' package
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strings"
 	"time"
@@ -93,6 +94,39 @@ func EscapeLaTeX(s string) string {
 	return latexReplacer.Replace(s)
 }
 
+// ConvertMarkdownLinksToLaTeX converts Markdown hyperlinks [text](url) to LaTeX \href{url}{text}
+// and escapes all other LaTeX special characters in the string
+func ConvertMarkdownLinksToLaTeX(s string) string {
+	// Regex to match Markdown links: [text](url)
+	re := regexp.MustCompile(`\[([^\]]+)\]\(([^)]+)\)`)
+
+	// Track positions of markdown links to avoid escaping them
+	var parts []string
+	lastIndex := 0
+
+	matches := re.FindAllStringSubmatchIndex(s, -1)
+	for _, match := range matches {
+		// Add the text before the link (escaped)
+		if match[0] > lastIndex {
+			parts = append(parts, EscapeLaTeX(s[lastIndex:match[0]]))
+		}
+
+		// Add the LaTeX href (with only the link text escaped)
+		text := s[match[2]:match[3]]
+		url := s[match[4]:match[5]]
+		parts = append(parts, fmt.Sprintf(`\href{%s}{%s}`, url, EscapeLaTeX(text)))
+
+		lastIndex = match[1]
+	}
+
+	// Add any remaining text after the last link (escaped)
+	if lastIndex < len(s) {
+		parts = append(parts, EscapeLaTeX(s[lastIndex:]))
+	}
+
+	return strings.Join(parts, "")
+}
+
 func generateRegularExperience(jobs []Job) string {
 	var sb strings.Builder
 
@@ -115,7 +149,9 @@ func generateRegularExperience(jobs []Job) string {
 		// Company
 		fmt.Fprintf(&sb, "    {%s}\n", strings.TrimSpace(job.Company))
 		// Description and skills
-		fmt.Fprintf(&sb, "    {%s\\\\ ", strings.TrimSpace(EscapeLaTeX(job.Description)))
+		// Convert Markdown links to LaTeX and escape special characters
+		description := strings.TrimSpace(ConvertMarkdownLinksToLaTeX(job.Description))
+		fmt.Fprintf(&sb, "    {%s\\\\ ", description)
 		if len(job.Technologies) > 0 {
 			for i, tech := range job.Technologies {
 				fmt.Fprintf(&sb, "\\texttt{%s}", EscapeLaTeX(tech))
@@ -149,7 +185,9 @@ func generateFullExperience(jobs []Job) string {
 		// Company
 		fmt.Fprintf(&sb, "    {%s}\n", strings.TrimSpace(job.Company))
 		// Description and skills
-		fmt.Fprintf(&sb, "    {%s\\\\ ", strings.TrimSpace(EscapeLaTeX(job.Description)))
+		// Convert Markdown links to LaTeX and escape special characters
+		description := strings.TrimSpace(ConvertMarkdownLinksToLaTeX(job.Description))
+		fmt.Fprintf(&sb, "    {%s\\\\ ", description)
 		if len(job.Technologies) > 0 {
 			for i, tech := range job.Technologies {
 				fmt.Fprintf(&sb, "\\texttt{%s}", EscapeLaTeX(tech))
