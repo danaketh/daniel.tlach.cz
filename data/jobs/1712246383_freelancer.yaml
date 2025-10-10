@@ -1,6 +1,7 @@
 title: Software Firefighter
 company: Freelancer
 website: 'https://daniel.tlach.cz'
+resume: true
 range:
   start: 2008-07-01T00:00:00.000Z
   current: true
