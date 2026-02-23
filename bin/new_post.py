@@ -46,7 +46,7 @@ def render_frontmatter(
     if tags:
         lines.append("tags:")
         for tag in tags:
-            lines.append(f"  - {tag.strip()}")
+            lines.append(f'  - "{tag.strip()}"')
     lines.append("---")
     return "\n".join(lines)
 
@@ -145,6 +145,11 @@ def prompt(question: str, options: list[str] | None = None, default: str = "") -
         if not options and not default:
             # Free-form field, empty is OK
             return answer
+        # Empty input with no default — show required message
+        if options:
+            print(f"    Please enter one of: {', '.join(options)}")
+        else:
+            print("    This field is required.")
 
 
 # ── Main ─────────────────────────────────────────────────────────────────────
@@ -170,11 +175,15 @@ def main():
     # 3. Title → slug
     while True:
         title = input("  Title: ").strip()
-        if title:
-            break
-        print("    Title cannot be empty.")
+        if not title:
+            print("    Title cannot be empty.")
+            continue
+        slug = slugify(title)
+        if not slug:
+            print("    Title must contain at least one ASCII letter or digit.")
+            continue
+        break
 
-    slug = slugify(title)
     print(f"  Slug: {slug}")
 
     # 4. Tags

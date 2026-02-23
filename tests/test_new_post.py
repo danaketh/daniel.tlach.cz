@@ -43,7 +43,7 @@ def test_render_frontmatter_with_tags():
     assert "draft: false" in fm
     assert "recipe: true" in fm
     assert "tags:" in fm
-    assert "- food" in fm
+    assert '- "food"' in fm
 
 def test_render_post_contains_frontmatter():
     content = render_post(
@@ -101,3 +101,33 @@ def test_create_post_dir_already_exists(tmp_path):
     # calling again should not raise
     post_dir = create_post_dir(tmp_path, ts, slug)
     assert post_dir.exists()
+
+def test_render_frontmatter_yaml_special_tags():
+    """Tags with YAML-special chars must be quoted in output."""
+    fm = render_frontmatter(
+        title="Test",
+        draft=True,
+        date="2026-02-23T10:00:00+00:00",
+        extra_params={},
+        tags=["c#", "foo: bar", "yes"],
+    )
+    assert '- "c#"' in fm
+    assert '- "foo: bar"' in fm
+    assert '- "yes"' in fm
+
+def test_render_review_other_subtype():
+    """Unknown/other subtype falls back to generic meta fields."""
+    content = render_review(
+        title="Misc", subtype="other", draft=True,
+        date="2026-02-23T10:00:00+00:00", tags=[]
+    )
+    assert "review-score" in content
+    assert "verdict" in content
+
+def test_render_review_unknown_subtype_fallback():
+    """Truly unknown subtype falls back to 'other' template gracefully."""
+    content = render_review(
+        title="Misc", subtype="gadget", draft=True,
+        date="2026-02-23T10:00:00+00:00", tags=[]
+    )
+    assert "review-score" in content
