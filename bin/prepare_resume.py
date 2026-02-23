@@ -10,7 +10,7 @@ Reads all .yaml files from data/jobs/ (sorted descending by filename) and writes
   resume/experience_full.tex  — all jobs
 
 Requires:
-    pip install pyyaml
+    pip install -r requirements.txt
 """
 
 import re
