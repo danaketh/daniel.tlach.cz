@@ -19,13 +19,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Go
-        uses: actions/setup-go@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          go-version: '1.24' # Specify your Go version
+          python-version: '3.12'
 
-      - name: Run Go preparation script
-        run: go run ./bin/prepare_resume.go
+      - name: Install Python dependencies
+        run: pip install pyyaml
+
+      - name: Run Python preparation script
+        run: python bin/prepare_resume.py
 
       - name: Build regular resume
         uses: xu-cheng/latex-action@v3
