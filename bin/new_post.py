@@ -120,3 +120,108 @@ def create_post_dir(content_blog_path: pathlib.Path, ts: int, slug: str) -> path
     post_dir = content_blog_path / f"{ts}_{slug}"
     post_dir.mkdir(parents=True, exist_ok=True)
     return post_dir
+
+
+# ── Prompts ───────────────────────────────────────────────────────────────────
+
+def prompt(question: str, options: list[str] | None = None, default: str = "") -> str:
+    """Print a prompt and return the user's answer."""
+    if options:
+        opts_str = " / ".join(
+            f"[{o}]" if o == default else o for o in options
+        )
+        question = f"{question} ({opts_str})"
+    if default:
+        question = f"{question} [{default}]"
+    while True:
+        answer = input(f"  {question}: ").strip()
+        if not answer and default:
+            return default
+        if answer:
+            if options and answer not in options:
+                print(f"    Please enter one of: {', '.join(options)}")
+                continue
+            return answer
+        if not options and not default:
+            # Free-form field, empty is OK
+            return answer
+
+
+# ── Main ─────────────────────────────────────────────────────────────────────
+
+def main():
+    # Locate content/blog relative to this script (bin/../content/blog)
+    script_dir = pathlib.Path(__file__).resolve().parent
+    content_blog = script_dir.parent / "content" / "blog"
+    if not content_blog.is_dir():
+        print(f"Error: {content_blog} does not exist. Run from project root.")
+        sys.exit(1)
+
+    print("\n=== New Hugo Post ===\n")
+
+    # 1. Post type
+    post_type = prompt("Post type", options=["post", "recipe", "review"])
+
+    # 2. Review sub-type
+    review_subtype = None
+    if post_type == "review":
+        review_subtype = prompt("Review sub-type", options=["game", "film", "book", "other"])
+
+    # 3. Title → slug
+    while True:
+        title = input("  Title: ").strip()
+        if title:
+            break
+        print("    Title cannot be empty.")
+
+    slug = slugify(title)
+    print(f"  Slug: {slug}")
+
+    # 4. Tags
+    raw_tags = input("  Tags (comma-separated, or Enter to skip): ").strip()
+    tags = [t.strip() for t in raw_tags.split(",") if t.strip()] if raw_tags else []
+
+    # 5. Languages
+    lang_choice = prompt("Language(s)", options=["en", "cs", "both"], default="en")
+    languages = ["en", "cs"] if lang_choice == "both" else [lang_choice]
+
+    # 6. Draft
+    draft_choice = prompt("Draft?", options=["yes", "no"], default="yes")
+    draft = draft_choice == "yes"
+
+    # Build timestamp + ISO date
+    ts = int(time.time())
+    now = datetime.now(tz=timezone.utc).astimezone()
+    iso_date = now.isoformat()
+
+    # Render content
+    if post_type == "post":
+        content = render_post(title, draft, iso_date, tags)
+    elif post_type == "recipe":
+        content = render_recipe(title, draft, iso_date, tags)
+    else:
+        content = render_review(title, review_subtype, draft, iso_date, tags)
+
+    # Create directory and files
+    post_dir = create_post_dir(content_blog, ts, slug)
+    created = []
+    for lang in languages:
+        file_path = post_dir / f"index.{lang}.md"
+        file_path.write_text(content, encoding="utf-8")
+        created.append(file_path)
+
+    print(f"\nCreated: {post_dir}")
+    for f in created:
+        print(f"  {f.relative_to(script_dir.parent)}")
+
+    if post_type == "recipe":
+        print(
+            f"\nTip: Once you've written the recipe, generate a cover image with:\n"
+            f"  python bin/generate_recipe_image.py {post_dir.relative_to(script_dir.parent)}"
+        )
+
+    print()
+
+
+if __name__ == "__main__":
+    main()
