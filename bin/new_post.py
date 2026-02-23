@@ -131,7 +131,7 @@ def prompt(question: str, options: list[str] | None = None, default: str = "") -
             f"[{o}]" if o == default else o for o in options
         )
         question = f"{question} ({opts_str})"
-    if default:
+    elif default:
         question = f"{question} [{default}]"
     while True:
         answer = input(f"  {question}: ").strip()
