@@ -84,3 +84,20 @@ def test_render_review_book_minimal():
     )
     assert "review-score" in content
     assert "verdict" in content
+
+from new_post import create_post_dir
+
+def test_create_post_dir(tmp_path):
+    ts = 1740000000
+    slug = "texas-chilli"
+    post_dir = create_post_dir(tmp_path, ts, slug)
+    assert post_dir.exists()
+    assert post_dir.name == f"{ts}_{slug}"
+
+def test_create_post_dir_already_exists(tmp_path):
+    ts = 1740000000
+    slug = "texas-chilli"
+    create_post_dir(tmp_path, ts, slug)
+    # calling again should not raise
+    post_dir = create_post_dir(tmp_path, ts, slug)
+    assert post_dir.exists()

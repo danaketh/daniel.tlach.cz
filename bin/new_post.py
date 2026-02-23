@@ -111,3 +111,12 @@ def render_review(
         {{{{< /verdict >}}}}
     """)
     return fm + body
+
+
+# ── File system ───────────────────────────────────────────────────────────────
+
+def create_post_dir(content_blog_path: pathlib.Path, ts: int, slug: str) -> pathlib.Path:
+    """Create and return the post directory."""
+    post_dir = content_blog_path / f"{ts}_{slug}"
+    post_dir.mkdir(parents=True, exist_ok=True)
+    return post_dir
