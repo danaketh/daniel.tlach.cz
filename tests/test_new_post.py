@@ -1,5 +1,6 @@
 import sys
-sys.path.insert(0, "bin")
+import pathlib
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "bin"))
 from new_post import slugify
 
 def test_slugify_basic():
@@ -13,3 +14,6 @@ def test_slugify_multiple_spaces():
 
 def test_slugify_leading_trailing_hyphens():
     assert slugify("--foo bar--") == "foo-bar"
+
+def test_slugify_empty():
+    assert slugify("") == ""
