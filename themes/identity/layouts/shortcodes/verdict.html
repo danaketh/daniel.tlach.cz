@@ -1,0 +1,6 @@
+<div class="verdict-box">
+    {{ with .Get "verdict" }}<span class="verdict-rating">{{ . }}</span>{{ end }}
+    <div class="verdict-content">
+        {{ .Inner | markdownify }}
+    </div>
+</div>

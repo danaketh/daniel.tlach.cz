@@ -13,17 +13,18 @@ header {
         list-style: none;
 
         &.brand {
-          background-color: $color-primary;
-          color: $color-text;
+          background-color: var(--md-sys-color-primary);
+          color: var(--md-sys-color-on-primary);
 
           a {
             display: block;
-            color: $color-link-hover;
+            color: var(--md-sys-color-on-primary);
             text-decoration: none;
-            font-size: rem($font-size);
-            line-height: rem(16);
-            font-weight: bold;
-            padding: rem(40) rem(48);
+            font-family: var(--md-sys-typescale-title-medium-font);
+            font-size: var(--md-sys-typescale-title-medium-size);
+            font-weight: var(--md-sys-typescale-title-medium-weight);
+            line-height: var(--md-sys-typescale-title-medium-line-height);
+            padding: var(--md-sys-spacing-10) var(--md-sys-spacing-12);
           }
 
           span {
@@ -38,7 +39,7 @@ header {
         &.nav {
           @include flex("0 0 auto");
           align-content: center;
-          margin-right: rem(24);
+          margin-right: var(--md-sys-spacing-6);
         }
 
         li {
@@ -51,15 +52,22 @@ header {
           &.active {
             a {
               text-decoration: none;
-              color: $color-link-active;
+              color: var(--md-sys-color-link-active);
             }
           }
 
           a {
-            padding: 0 rem(8);
-            font-weight: 600;
-            font-size: rem(16);
-            line-height: rem(25);
+            padding: 0 var(--md-sys-spacing-2);
+            font-family: var(--md-sys-typescale-label-large-font);
+            font-size: var(--md-sys-typescale-label-large-size);
+            font-weight: var(--md-sys-typescale-label-large-weight);
+            line-height: var(--md-sys-typescale-label-large-line-height);
+            letter-spacing: var(--md-sys-typescale-label-large-tracking);
+
+            @include for-desktop-up {
+              font-size: var(--md-sys-typescale-title-medium-size);
+              line-height: var(--md-sys-typescale-title-medium-line-height);
+            }
           }
         }
       }

@@ -1,0 +1,185 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Material Design 3 — Design Tokens
+// Customised for daniel.tlach.cz
+//
+// Color palette:   existing site palette preserved
+// Display/Headline font: Overpass (proportional)
+// Body/Label font:       Overpass Mono (monospace)
+// Spacing:         4px grid expressed in rem
+// ─────────────────────────────────────────────────────────────────────────────
+
+:root {
+
+  // ── Color System ───────────────────────────────────────────────────────────
+
+  --md-sys-color-primary:                #3d7ef7;
+  --md-sys-color-on-primary:             #fff;
+  --md-sys-color-primary-container:      #dce8ff;
+  --md-sys-color-on-primary-container:   #001a44;
+
+  --md-sys-color-surface:                #fff;
+  --md-sys-color-on-surface:             #1a1a1a;
+  --md-sys-color-on-surface-variant:     #888;
+  --md-sys-color-surface-variant:        #f5f5f5;
+  --md-sys-color-surface-container:      #f7f7f7;
+  --md-sys-color-surface-container-high: #f0f0f0;
+
+  --md-sys-color-inverse-surface:        #1a1a1a;
+  --md-sys-color-inverse-on-surface:     #fff;
+
+  --md-sys-color-outline:                #e0e0e0;
+  --md-sys-color-outline-variant:        #f0f0f0;
+
+  --md-sys-color-error:                  #e63946;
+  --md-sys-color-on-error:               #fff;
+  --md-sys-color-tertiary:               #2a9d5c;   // positive / pros
+
+  --md-sys-color-link:                   #ccc;
+  --md-sys-color-link-hover:             #fff;
+  --md-sys-color-link-active:            #3d7ef7;
+
+
+  // ── Typescale — Font Families ──────────────────────────────────────────────
+
+  --md-sys-typescale-display-font:   'Overpass Mono', monospace;
+  --md-sys-typescale-headline-font:  'Overpass Mono', monospace;
+  --md-sys-typescale-title-font:     'Overpass Mono', monospace;
+  --md-sys-typescale-body-font:      'Overpass Mono', monospace;
+  --md-sys-typescale-label-font:     'Overpass Mono', monospace;
+
+
+  // ── Typescale — Display ────────────────────────────────────────────────────
+
+  --md-sys-typescale-display-large-font:        var(--md-sys-typescale-display-font);
+  --md-sys-typescale-display-large-size:        3.5625rem;    // 57px
+  --md-sys-typescale-display-large-line-height: 4rem;         // 64px
+  --md-sys-typescale-display-large-weight:      600;
+  --md-sys-typescale-display-large-tracking:    -0.015625rem;
+
+  --md-sys-typescale-display-medium-font:        var(--md-sys-typescale-display-font);
+  --md-sys-typescale-display-medium-size:        2.8125rem;   // 45px
+  --md-sys-typescale-display-medium-line-height: 3.25rem;     // 52px
+  --md-sys-typescale-display-medium-weight:      600;
+  --md-sys-typescale-display-medium-tracking:    0;
+
+  --md-sys-typescale-display-small-font:        var(--md-sys-typescale-display-font);
+  --md-sys-typescale-display-small-size:        2.25rem;      // 36px
+  --md-sys-typescale-display-small-line-height: 2.75rem;      // 44px
+  --md-sys-typescale-display-small-weight:      600;
+  --md-sys-typescale-display-small-tracking:    0;
+
+
+  // ── Typescale — Headline ───────────────────────────────────────────────────
+
+  --md-sys-typescale-headline-large-font:        var(--md-sys-typescale-headline-font);
+  --md-sys-typescale-headline-large-size:        2rem;        // 32px
+  --md-sys-typescale-headline-large-line-height: 2.5rem;      // 40px
+  --md-sys-typescale-headline-large-weight:      600;
+  --md-sys-typescale-headline-large-tracking:    0;
+
+  --md-sys-typescale-headline-medium-font:        var(--md-sys-typescale-headline-font);
+  --md-sys-typescale-headline-medium-size:        1.75rem;    // 28px
+  --md-sys-typescale-headline-medium-line-height: 2.25rem;    // 36px
+  --md-sys-typescale-headline-medium-weight:      600;
+  --md-sys-typescale-headline-medium-tracking:    0;
+
+  --md-sys-typescale-headline-small-font:        var(--md-sys-typescale-headline-font);
+  --md-sys-typescale-headline-small-size:        1.5rem;      // 24px
+  --md-sys-typescale-headline-small-line-height: 2rem;        // 32px
+  --md-sys-typescale-headline-small-weight:      600;
+  --md-sys-typescale-headline-small-tracking:    0;
+
+
+  // ── Typescale — Title ─────────────────────────────────────────────────────
+
+  --md-sys-typescale-title-large-font:        var(--md-sys-typescale-title-font);
+  --md-sys-typescale-title-large-size:        1.375rem;     // 22px
+  --md-sys-typescale-title-large-line-height: 1.75rem;      // 28px
+  --md-sys-typescale-title-large-weight:      600;
+  --md-sys-typescale-title-large-tracking:    0;
+
+  --md-sys-typescale-title-medium-font:        var(--md-sys-typescale-body-font);
+  --md-sys-typescale-title-medium-size:        1rem;         // 16px
+  --md-sys-typescale-title-medium-line-height: 1.5rem;       // 24px
+  --md-sys-typescale-title-medium-weight:      600;
+  --md-sys-typescale-title-medium-tracking:    0.009375rem;
+
+  --md-sys-typescale-title-small-font:        var(--md-sys-typescale-body-font);
+  --md-sys-typescale-title-small-size:        0.875rem;     // 14px
+  --md-sys-typescale-title-small-line-height: 1.25rem;      // 20px
+  --md-sys-typescale-title-small-weight:      600;
+  --md-sys-typescale-title-small-tracking:    0.00625rem;
+
+
+  // ── Typescale — Body ──────────────────────────────────────────────────────
+
+  --md-sys-typescale-body-large-font:        var(--md-sys-typescale-body-font);
+  --md-sys-typescale-body-large-size:        1rem;           // 16px
+  --md-sys-typescale-body-large-line-height: 1.75rem;        // 28px  (generous for prose)
+  --md-sys-typescale-body-large-weight:      400;
+  --md-sys-typescale-body-large-tracking:    0.03125rem;
+
+  --md-sys-typescale-body-medium-font:        var(--md-sys-typescale-body-font);
+  --md-sys-typescale-body-medium-size:        0.875rem;      // 14px
+  --md-sys-typescale-body-medium-line-height: 1.25rem;       // 20px
+  --md-sys-typescale-body-medium-weight:      400;
+  --md-sys-typescale-body-medium-tracking:    0.015625rem;
+
+  --md-sys-typescale-body-small-font:        var(--md-sys-typescale-body-font);
+  --md-sys-typescale-body-small-size:        0.75rem;        // 12px
+  --md-sys-typescale-body-small-line-height: 1rem;           // 16px
+  --md-sys-typescale-body-small-weight:      400;
+  --md-sys-typescale-body-small-tracking:    0.025rem;
+
+
+  // ── Typescale — Label ─────────────────────────────────────────────────────
+
+  --md-sys-typescale-label-large-font:        var(--md-sys-typescale-label-font);
+  --md-sys-typescale-label-large-size:        0.875rem;      // 14px
+  --md-sys-typescale-label-large-line-height: 1.25rem;       // 20px
+  --md-sys-typescale-label-large-weight:      500;
+  --md-sys-typescale-label-large-tracking:    0.00625rem;
+
+  --md-sys-typescale-label-medium-font:        var(--md-sys-typescale-label-font);
+  --md-sys-typescale-label-medium-size:        0.75rem;      // 12px
+  --md-sys-typescale-label-medium-line-height: 1rem;         // 16px
+  --md-sys-typescale-label-medium-weight:      500;
+  --md-sys-typescale-label-medium-tracking:    0.03125rem;
+
+  --md-sys-typescale-label-small-font:        var(--md-sys-typescale-label-font);
+  --md-sys-typescale-label-small-size:        0.6875rem;     // 11px
+  --md-sys-typescale-label-small-line-height: 1rem;          // 16px
+  --md-sys-typescale-label-small-weight:      500;
+  --md-sys-typescale-label-small-tracking:    0.03125rem;
+
+
+  // ── Spacing (4px grid) ────────────────────────────────────────────────────
+
+  --md-sys-spacing-1:   0.25rem;   //  4px
+  --md-sys-spacing-2:   0.5rem;    //  8px
+  --md-sys-spacing-3:   0.75rem;   // 12px
+  --md-sys-spacing-4:   1rem;      // 16px
+  --md-sys-spacing-5:   1.25rem;   // 20px
+  --md-sys-spacing-6:   1.5rem;    // 24px
+  --md-sys-spacing-7:   1.75rem;   // 28px
+  --md-sys-spacing-8:   2rem;      // 32px
+  --md-sys-spacing-9:   2.25rem;   // 36px
+  --md-sys-spacing-10:  2.5rem;    // 40px
+  --md-sys-spacing-12:  3rem;      // 48px
+  --md-sys-spacing-14:  3.5rem;    // 56px
+  --md-sys-spacing-16:  4rem;      // 64px
+  --md-sys-spacing-18:  4.5rem;    // 72px
+  --md-sys-spacing-20:  5rem;      // 80px
+  --md-sys-spacing-24:  6rem;      // 96px
+  --md-sys-spacing-32:  8rem;      // 128px
+
+
+  // ── Shape (border-radius) ─────────────────────────────────────────────────
+
+  --md-sys-shape-corner-extra-small: 0.25rem;   //  4px
+  --md-sys-shape-corner-small:       0.5rem;    //  8px
+  --md-sys-shape-corner-medium:      0.75rem;   // 12px
+  --md-sys-shape-corner-large:       1rem;      // 16px
+  --md-sys-shape-corner-extra-large: 1.75rem;   // 28px
+
+}

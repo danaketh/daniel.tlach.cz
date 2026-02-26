@@ -1,29 +1,41 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
 {{ partial "header.html" . }}
-<body class="blog">
+<body class="blog{{ if .Params.recipe }} recipe{{ end }}">
 {{ partial "navigation.html" . }}
 
 <main class="container">
     <article itemscope itemtype="https://schema.org/NewsArticle">
 
         <header>
-            <p class="back">
-                <a href="/blog"><span>&lbarr;</span> Back to Blog</a>
-            </p>
-            <h1 itemprop="headline">{{ .Title }}</h1>
-            <div>
-                <time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}">
-                    {{ .Date.Format "January 2, 2006" }}
-                </time>
-                <div class="categories"></div>
+            <div class="article-top-bar">
+                <p class="back">
+                    <a href="/blog"><span>&lbarr;</span> Back to Blog</a>
+                </p>
+                {{ if .IsTranslated }}
+                <div class="lang-switcher" aria-label="Language versions">
+                    {{ range .AllTranslations }}
+                        {{ if eq .Language.Lang $.Language.Lang }}
+                            <span class="lang-btn active" aria-current="true">{{ .Language.Lang | upper }}</span>
+                        {{ else }}
+                            <a class="lang-btn" href="{{ .RelPermalink }}" lang="{{ .Language.Lang }}" hreflang="{{ .Language.Lang }}">{{ .Language.Lang | upper }}</a>
+                        {{ end }}
+                    {{ end }}
+                </div>
+                {{ end }}
             </div>
             {{ with .Params.thumbnail }}
-                <img src="{{ . }}" alt="thumbnail" class="p-article__thumbnail">
+                <img src="{{ . }}" alt="thumbnail" class="p-article__thumbnail{{ with $.Params.thumbnail_filter }} filter--{{ . }}{{ end }}">
             {{ end }}
+            <h1 itemprop="headline">{{ .Title }}</h1>
+            <div class="article-meta">
+                <time itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}">
+                    {{ .Date | time.Format ":date_long" }}
+                </time>
+            </div>
         </header>
 
-        <div itemprop="articleBody" class="container">
+        <div itemprop="articleBody">
             {{ .Content }}
         </div>
 

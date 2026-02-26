@@ -1,0 +1,16 @@
+{{ $pros := split (.Get "pros") "|" }}
+{{ $cons := split (.Get "cons") "|" }}
+<div class="pros-cons">
+    {{ if .Get "pros" }}
+    <div class="pros">
+        <h4>Pros</h4>
+        <ul>{{ range $pros }}{{ if . }}<li>{{ . }}</li>{{ end }}{{ end }}</ul>
+    </div>
+    {{ end }}
+    {{ if .Get "cons" }}
+    <div class="cons">
+        <h4>Cons</h4>
+        <ul>{{ range $cons }}{{ if . }}<li>{{ . }}</li>{{ end }}{{ end }}</ul>
+    </div>
+    {{ end }}
+</div>

@@ -1,0 +1,10 @@
+{{ $score := .Get "score" }}
+{{ $max := .Get "max" | default "10" }}
+{{ $label := .Get "label" }}
+<div class="review-score">
+    <div class="score-number">{{ $score }}</div>
+    <div class="score-details">
+        {{ with $label }}<div class="score-label">{{ . }}</div>{{ end }}
+        <div class="score-max">out of {{ $max }}</div>
+    </div>
+</div>

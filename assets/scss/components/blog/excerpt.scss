@@ -1,31 +1,46 @@
 article {
   header {
-    margin: 0 0 rem(32) 0;
+    margin: 0 0 var(--md-sys-spacing-8) 0;
+  }
+
+  .p-article__thumbnail {
+    margin: 0 auto 28px auto;
+    max-width: 700px;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 4px 28px rgba($color-primary, 0.18);
   }
 
   h1 {
-    color: $color-blog-text;
-    font-size: rem(40);
-    line-height: rem(61);
-    font-family: $font-normal;
-    font-weight: 600;
+    font-family: var(--md-sys-typescale-headline-large-font);
+    font-size: var(--md-sys-typescale-headline-large-size);
+    line-height: var(--md-sys-typescale-headline-large-line-height);
+    font-weight: var(--md-sys-typescale-headline-large-weight);
+    color: var(--md-sys-color-on-surface);
+
+    @include for-desktop-up {
+      font-size: var(--md-sys-typescale-display-small-size);
+      line-height: var(--md-sys-typescale-display-small-line-height);
+    }
 
     a {
-      color: $color-blog-text;
+      color: var(--md-sys-color-on-surface);
       text-decoration: none;
 
       &:hover {
-        color: $color-primary;
+        color: var(--md-sys-color-primary);
         text-decoration: underline;
       }
     }
   }
 
   [itemprop="datePublished"] {
-    font-size: rem(18);
-    line-height: rem(24);
-    font-family: $font-normal;
-    margin: rem(8) 0 0 0;
+    font-family: var(--md-sys-typescale-label-large-font);
+    font-size: var(--md-sys-typescale-label-large-size);
+    line-height: var(--md-sys-typescale-label-large-line-height);
+    letter-spacing: var(--md-sys-typescale-label-large-tracking);
+    color: var(--md-sys-color-on-surface-variant);
+    margin: var(--md-sys-spacing-2) 0 0 0;
   }
 
   .categories {
@@ -34,71 +49,73 @@ article {
     a {
       text-decoration: none;
       text-transform: lowercase;
-      color: $color-primary;
-      font-size: rem(18);
-      line-height: rem(24);
+      color: var(--md-sys-color-primary);
+      font-family: var(--md-sys-typescale-label-large-font);
+      font-size: var(--md-sys-typescale-label-large-size);
+      line-height: var(--md-sys-typescale-label-large-line-height);
     }
   }
 
   [itemprop="articleBody"] {
-    font-size: rem(18);
-    line-height: rem(32);
-    font-family: $font-serif;
+    font-family: var(--md-sys-typescale-body-large-font);
+    font-size: var(--md-sys-typescale-body-large-size);
+    line-height: var(--md-sys-typescale-body-large-line-height);
 
     h2 {
-      font-size: rem(30);
-      line-height: rem(32);
-      font-weight: bold;
-      margin: rem(48) 0 0 0;
+      font-family: var(--md-sys-typescale-headline-medium-font);
+      font-size: var(--md-sys-typescale-headline-medium-size);
+      line-height: var(--md-sys-typescale-headline-medium-line-height);
+      font-weight: var(--md-sys-typescale-headline-medium-weight);
+      margin: var(--md-sys-spacing-12) 0 0 0;
 
       &:first-of-type {
-        margin-top: rem(32);
+        margin-top: var(--md-sys-spacing-8);
 
         &::before {
           display: block;
           content: "";
           height: 24px;
           width: 8px;
-          background-color: $color-primary;
-          margin-bottom: rem(32);
+          background-color: var(--md-sys-color-primary);
+          margin-bottom: var(--md-sys-spacing-8);
         }
       }
     }
 
     p {
-      font-family: $font-serif;
-      font-size: rem(18);
-      line-height: rem(32);
-      margin: rem(16) 0;
+      font-family: var(--md-sys-typescale-body-large-font);
+      font-size: var(--md-sys-typescale-body-large-size);
+      line-height: var(--md-sys-typescale-body-large-line-height);
+      margin: var(--md-sys-spacing-4) 0;
     }
 
     a {
-      color: $color-primary;
+      color: var(--md-sys-color-primary);
     }
 
     .categories {
-      margin-top: rem(48);
+      margin-top: var(--md-sys-spacing-12);
     }
   }
 
   .back {
-    margin: 0 0 rem(70) 0;
+    margin: 0 0 var(--md-sys-spacing-4) 0;
 
     a {
-      color: $color-primary;
+      color: var(--md-sys-color-primary);
       text-decoration: none;
-      line-height: rem(25);
-      font-size: rem(16);
-      font-family: $font-normal;
+      font-family: var(--md-sys-typescale-label-large-font);
+      font-size: var(--md-sys-typescale-body-large-size);
+      line-height: var(--md-sys-typescale-label-large-line-height);
       font-weight: bold;
     }
   }
 
   .read-more {
-    color: $color-primary;
-    font-size: rem(16);
-    line-height: rem(25);
-    font-family: $font-normal;
+    color: var(--md-sys-color-primary);
+    font-family: var(--md-sys-typescale-label-large-font);
+    font-size: var(--md-sys-typescale-label-large-size);
+    line-height: var(--md-sys-typescale-label-large-line-height);
     font-weight: bold;
   }
 }

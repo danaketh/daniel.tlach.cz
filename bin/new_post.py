@@ -29,40 +29,57 @@ def slugify(title: str) -> str:
 
 def render_frontmatter(
     title: str,
+    slug: str,
     draft: bool,
     date: str,
     extra_params: dict,
     tags: list[str],
+    cover_prompt: str = "",
+    thumbnail: str = "",
 ) -> str:
     lines = ["---"]
-    lines.append(f'title: "{title}"')
+    if cover_prompt:
+        lines.append(f"cover_prompt: {cover_prompt}")
+    lines.append(f"date: {date}")
+    lines.append(f"draft: {'true' if draft else 'false'}")
     lines.append("params:")
     lines.append("  nav: blog")
     for key, val in extra_params.items():
         v = "true" if val is True else "false" if val is False else str(val)
         lines.append(f"  {key}: {v}")
-    lines.append(f"draft: {'true' if draft else 'false'}")
-    lines.append(f"date: {date}")
+    lines.append(f"slug: {slug}")
     if tags:
         lines.append("tags:")
         for tag in tags:
-            lines.append(f'  - "{tag.strip()}"')
+            lines.append(f"- {tag.strip()}")
+    if thumbnail is not None:
+        lines.append(f"thumbnail: {thumbnail}")
+    lines.append(f"title: {title}")
     lines.append("---")
     return "\n".join(lines)
 
 
 # ── Content templates ─────────────────────────────────────────────────────────
 
-def render_post(title: str, draft: bool, date: str, tags: list[str]) -> str:
-    fm = render_frontmatter(title, draft, date, {}, tags)
+def render_post(title: str, slug: str, draft: bool, date: str, tags: list[str]) -> str:
+    fm = render_frontmatter(title, slug, draft, date, {}, tags, thumbnail=None)
     return fm + "\n\n"
 
 
-def render_recipe(title: str, draft: bool, date: str, tags: list[str]) -> str:
-    fm = render_frontmatter(title, draft, date, {"recipe": True}, tags)
+def render_recipe(
+    title: str,
+    slug: str,
+    draft: bool,
+    date: str,
+    tags: list[str],
+    cover_prompt: str = "",
+) -> str:
+    fm = render_frontmatter(title, slug, draft, date, {"recipe": True}, tags,
+                            cover_prompt=cover_prompt, thumbnail="")
     body = textwrap.dedent("""\
 
         {{< recipe-meta prep="" cook="" serves="" difficulty="" >}}
+        <!--more-->
 
         ## Ingredients
 
@@ -81,12 +98,13 @@ def render_recipe(title: str, draft: bool, date: str, tags: list[str]) -> str:
 
 def render_review(
     title: str,
+    slug: str,
     subtype: str,
     draft: bool,
     date: str,
     tags: list[str],
 ) -> str:
-    fm = render_frontmatter(title, draft, date, {"review": True}, tags)
+    fm = render_frontmatter(title, slug, draft, date, {"review": True}, tags, thumbnail=None)
 
     meta_fields = {
         "game":  'genre="" year="" developer="" platform="" players=""',
@@ -198,23 +216,27 @@ def main():
     draft_choice = prompt("Draft?", options=["yes", "no"], default="yes")
     draft = draft_choice == "yes"
 
+    # For recipes, ask for a cover image prompt (used by generate_recipe_image.py)
+    cover_prompt = ""
+    if post_type == "recipe" and "en" in languages:
+        cover_prompt = input("  Cover image prompt (describe the dish for AI): ").strip()
+
     # Build timestamp + ISO date
     ts = int(time.time())
     now = datetime.now(tz=timezone.utc).astimezone()
     iso_date = now.isoformat()
 
-    # Render content
-    if post_type == "post":
-        content = render_post(title, draft, iso_date, tags)
-    elif post_type == "recipe":
-        content = render_recipe(title, draft, iso_date, tags)
-    else:
-        content = render_review(title, review_subtype, draft, iso_date, tags)
-
     # Create directory and files
     post_dir = create_post_dir(content_blog, ts, slug)
     created = []
     for lang in languages:
+        if post_type == "post":
+            content = render_post(title, slug, draft, iso_date, tags)
+        elif post_type == "recipe":
+            cp = cover_prompt if lang == "en" else ""
+            content = render_recipe(title, slug, draft, iso_date, tags, cover_prompt=cp)
+        else:
+            content = render_review(title, slug, review_subtype, draft, iso_date, tags)
         file_path = post_dir / f"index.{lang}.md"
         file_path.write_text(content, encoding="utf-8")
         created.append(file_path)

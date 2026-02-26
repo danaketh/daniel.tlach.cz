@@ -1,5 +1,5 @@
 openai
 Pillow
+python-dotenv
 python-frontmatter
 pyyaml
-requests

@@ -2,15 +2,17 @@
 
 html,
 body {
-  height: 100%;
+  margin: 0;
 }
 
 body {
   background-color: $lightBackground;
-  color: $darkText;
-  font-family: $font-normal;
-  margin: 0;
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--md-sys-typescale-body-font);
   padding: 0;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 
   &.theme-dark {
     background-color: $darkBackground;
@@ -29,53 +31,57 @@ a {
 }
 
 h1 {
-  font-size: rem(32);
-  line-height: rem(49);
+  font-family: var(--md-sys-typescale-headline-large-font);
+  font-size: var(--md-sys-typescale-headline-large-size);
+  line-height: var(--md-sys-typescale-headline-large-line-height);
+  font-weight: var(--md-sys-typescale-headline-large-weight);
+  letter-spacing: var(--md-sys-typescale-headline-large-tracking);
   margin: 0;
-  font-weight: 600;
-
-  @include for-tablet-up {
-    font-size: rem(36);
-    line-height: rem(46);
-  }
 
   @include for-desktop-up {
-    font-size: rem(40);
-    line-height: rem(61);
+    font-size: var(--md-sys-typescale-display-small-size);
+    line-height: var(--md-sys-typescale-display-small-line-height);
   }
 }
 
 p {
-  font-size: rem(16);
-  line-height: rem(28);
-  margin: rem(24) 0;
+  font-family: var(--md-sys-typescale-body-large-font);
+  font-size: var(--md-sys-typescale-body-large-size);
+  line-height: var(--md-sys-typescale-body-large-line-height);
+  margin: var(--md-sys-spacing-6) 0;
 
   &.intro {
     @include for-tablet-up {
-      font-size: rem(18);
-      line-height: rem(32);
-      margin: rem(32) 0;
+      font-size: var(--md-sys-typescale-title-large-size);
+      line-height: var(--md-sys-typescale-title-large-line-height);
+      margin: var(--md-sys-spacing-8) 0;
     }
 
     @include for-desktop-up {
-      font-size: rem(24);
-      line-height: rem(40);
+      font-size: var(--md-sys-typescale-headline-small-size);
+      line-height: var(--md-sys-typescale-headline-small-line-height);
     }
   }
 }
 
 main {
   @include flex("1 0 auto");
-  margin: rem(64) rem(32);
+  margin: var(--md-sys-spacing-16) var(--md-sys-spacing-8);
 
   @include for-tablet-up {
-    margin: rem(80) rem(96);
+    margin: var(--md-sys-spacing-20) auto;
   }
 
   @include for-desktop-up {
     width: 100%;
     max-width: 960px;
-    margin: rem(128) auto rem(120);
+    margin: var(--md-sys-spacing-32) auto var(--md-sys-spacing-20);
+  }
+}
+
+section {
+  &[role="list"] {
+    width: 100%;
   }
 }
 
@@ -92,10 +98,10 @@ footer {
 
     > div {
       box-sizing: border-box;
-      margin: rem(48) rem(32) rem(32);
+      margin: var(--md-sys-spacing-12) var(--md-sys-spacing-8) var(--md-sys-spacing-8);
 
       @include for-tablet-up {
-        margin: rem(96) rem(96) rem(32);
+        margin: var(--md-sys-spacing-24) var(--md-sys-spacing-24) var(--md-sys-spacing-8);
       }
 
       p {
@@ -103,13 +109,13 @@ footer {
 
         &:first-child {
           @include for-tablet-up {
-            font-size: rem(18);
-            line-height: rem(32);
+            font-size: var(--md-sys-typescale-title-large-size);
+            line-height: var(--md-sys-typescale-title-large-line-height);
           }
         }
 
         &:nth-child(2) {
-          margin: rem(80) 0 rem(48);
+          margin: var(--md-sys-spacing-20) 0 var(--md-sys-spacing-12);
         }
       }
     }
@@ -121,11 +127,11 @@ footer {
   margin: rem(56+36) 0 0 0;
 
   @include for-tablet-up {
-    margin: rem(72) 0 0 0;
+    margin: var(--md-sys-spacing-18) 0 0 0;
   }
 
   @include for-desktop-up {
-    margin: rem(80) 0 0 0;
+    margin: var(--md-sys-spacing-20) 0 0 0;
     padding: 0 0 0 rem(164);
   }
 
@@ -159,16 +165,16 @@ footer {
 
   li {
     list-style: none;
-    margin: rem(8) 0 rem(4) rem(16);
-    font-size: 1rem;
-    line-height: 1.75rem;
+    margin: var(--md-sys-spacing-2) 0 var(--md-sys-spacing-1) var(--md-sys-spacing-4);
+    font-size: var(--md-sys-typescale-body-large-size);
+    line-height: var(--md-sys-typescale-body-large-line-height);
 
     &:before {
       content: "·";
-      font-size: rem(18);
+      font-size: var(--md-sys-typescale-title-medium-size);
       font-weight: bold;
       vertical-align: baseline;
-      margin: 0 rem(8) 0 rem(-16);
+      margin: 0 var(--md-sys-spacing-2) 0 calc(-1 * var(--md-sys-spacing-4));
     }
   }
 
@@ -186,6 +192,6 @@ footer {
 .article-divider {
   height: 1px;
   border: 0;
-  border-top: 1px solid #ccc;
-  margin: rem(56) 0;
+  border-top: 1px solid var(--md-sys-color-outline);
+  margin: var(--md-sys-spacing-14) 0;
 }

@@ -1,0 +1,92 @@
+{{ $serves := .Get "serves" | default "4" -}}
+<div class="recipe-ingredients" data-serves="{{ $serves }}">
+  <div class="ingredients-controls">
+    <div class="serves-control">
+      <span class="control-label">Serves</span>
+      <button class="serves-btn" data-action="decrease" aria-label="Decrease servings">−</button>
+      <span class="serves-count" aria-live="polite">{{ $serves }}</span>
+      <button class="serves-btn" data-action="increase" aria-label="Increase servings">+</button>
+    </div>
+    <div class="unit-toggle">
+      <button class="unit-btn active" data-unit="metric">Metric</button>
+      <button class="unit-btn" data-unit="imperial">Imperial</button>
+    </div>
+  </div>
+  <div class="ingredients-body">
+    {{ .Inner }}
+  </div>
+</div>
+<script>
+(function () {
+  var wrapper = document.currentScript.previousElementSibling;
+  var baseServes = parseFloat(wrapper.dataset.serves);
+  var currentServes = baseServes;
+  var currentUnit = 'metric';
+
+  var conversions = {
+    'g':  { factor: 0.035274,  imperial: 'oz' },
+    'kg': { factor: 2.20462,   imperial: 'lb' },
+    'ml': { factor: 0.033814,  imperial: 'fl oz' },
+    'l':  { factor: 4.22675,   imperial: 'cups' }
+  };
+
+  var ingredients = wrapper.querySelectorAll('.ingredient[data-qty]');
+  ingredients.forEach(function (el) {
+    el.dataset.baseQty = el.dataset.qty;
+    el.dataset.baseUnit = el.dataset.unit;
+  });
+
+  function formatQty(n) {
+    if (n === 0) return '0';
+    var rounded = Math.round(n * 100) / 100;
+    return parseFloat(rounded.toFixed(2)).toString();
+  }
+
+  function updateDisplay() {
+    var scale = currentServes / baseServes;
+
+    ingredients.forEach(function (el) {
+      var baseQty = parseFloat(el.dataset.baseQty);
+      var baseUnit = el.dataset.baseUnit;
+      var qtyEl = el.querySelector('.ingredient-qty');
+      var unitEl = el.querySelector('.ingredient-unit');
+
+      if (!qtyEl) return;
+
+      var scaledQty = baseQty * scale;
+      var displayUnit = baseUnit;
+
+      if (currentUnit === 'imperial' && conversions[baseUnit]) {
+        scaledQty = scaledQty * conversions[baseUnit].factor;
+        displayUnit = conversions[baseUnit].imperial;
+      }
+
+      qtyEl.textContent = formatQty(scaledQty);
+      if (unitEl) unitEl.textContent = displayUnit ? ' ' + displayUnit : '';
+    });
+
+    wrapper.querySelector('.serves-count').textContent = currentServes;
+  }
+
+  wrapper.querySelector('.serves-control').addEventListener('click', function (e) {
+    var btn = e.target.closest('.serves-btn');
+    if (!btn) return;
+    if (btn.dataset.action === 'increase') {
+      currentServes = Math.min(99, currentServes + 1);
+    } else {
+      currentServes = Math.max(1, currentServes - 1);
+    }
+    updateDisplay();
+  });
+
+  wrapper.querySelector('.unit-toggle').addEventListener('click', function (e) {
+    var btn = e.target.closest('.unit-btn');
+    if (!btn || btn.classList.contains('active')) return;
+    currentUnit = btn.dataset.unit;
+    wrapper.querySelectorAll('.unit-btn').forEach(function (b) {
+      b.classList.toggle('active', b === btn);
+    });
+    updateDisplay();
+  });
+}());
+</script>

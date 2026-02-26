@@ -1,0 +1,211 @@
+body.recipe article,
+article.recipe {
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+article.recipe .p-article__thumbnail,
+body.recipe article .p-article__thumbnail {
+  @include for-tablet-up {
+    display: block;
+    width: min(100vw, 960px);
+    max-width: none;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.recipe-ingredients {
+  margin: var(--md-sys-spacing-8) 0 var(--md-sys-spacing-12);
+
+  .ingredients-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--md-sys-spacing-3);
+    padding: var(--md-sys-spacing-3) var(--md-sys-spacing-4);
+    background: var(--md-sys-color-surface-variant);
+    border-radius: var(--md-sys-shape-corner-small);
+    margin-bottom: var(--md-sys-spacing-7);
+  }
+
+  .serves-control {
+    display: flex;
+    align-items: center;
+    gap: var(--md-sys-spacing-2);
+
+    .control-label {
+      font-family: var(--md-sys-typescale-label-small-font);
+      font-size: var(--md-sys-typescale-label-small-size);
+      font-weight: var(--md-sys-typescale-label-small-weight);
+      letter-spacing: var(--md-sys-typescale-label-small-tracking);
+      text-transform: uppercase;
+      color: var(--md-sys-color-on-surface-variant);
+    }
+
+    .serves-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: var(--md-sys-spacing-7);
+      height: var(--md-sys-spacing-7);
+      border: 1px solid var(--md-sys-color-outline);
+      border-radius: var(--md-sys-shape-corner-extra-small);
+      background: var(--md-sys-color-surface);
+      font-family: var(--md-sys-typescale-body-large-font);
+      font-size: var(--md-sys-typescale-body-large-size);
+      line-height: 1;
+      cursor: pointer;
+      color: var(--md-sys-color-on-surface);
+      padding: 0;
+      transition: background 0.15s, border-color 0.15s;
+
+      &:hover {
+        background: var(--md-sys-color-surface-container-high);
+        border-color: var(--md-sys-color-on-surface-variant);
+      }
+
+      &:active {
+        background: var(--md-sys-color-outline);
+      }
+    }
+
+    .serves-count {
+      font-family: var(--md-sys-typescale-title-medium-font);
+      font-size: var(--md-sys-typescale-title-medium-size);
+      font-weight: var(--md-sys-typescale-title-medium-weight);
+      min-width: var(--md-sys-spacing-6);
+      text-align: center;
+      color: var(--md-sys-color-on-surface);
+    }
+  }
+
+  .unit-toggle {
+    display: flex;
+    border: 1px solid var(--md-sys-color-outline);
+    border-radius: var(--md-sys-shape-corner-small);
+    overflow: hidden;
+
+    .unit-btn {
+      padding: var(--md-sys-spacing-1) var(--md-sys-spacing-3);
+      background: var(--md-sys-color-surface);
+      border: none;
+      font-family: var(--md-sys-typescale-label-small-font);
+      font-size: var(--md-sys-typescale-label-small-size);
+      font-weight: var(--md-sys-typescale-label-small-weight);
+      letter-spacing: var(--md-sys-typescale-label-small-tracking);
+      text-transform: uppercase;
+      cursor: pointer;
+      color: var(--md-sys-color-on-surface-variant);
+      transition: background 0.15s, color 0.15s;
+
+      & + .unit-btn {
+        border-left: 1px solid var(--md-sys-color-outline);
+      }
+
+      &.active {
+        background: var(--md-sys-color-inverse-surface);
+        color: var(--md-sys-color-inverse-on-surface);
+      }
+
+      &:not(.active):hover {
+        background: var(--md-sys-color-surface-container-high);
+        color: var(--md-sys-color-on-surface);
+      }
+    }
+  }
+
+  .ingredient-group {
+    margin-bottom: var(--md-sys-spacing-6);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .group-name {
+      font-family: var(--md-sys-typescale-label-small-font);
+      font-size: var(--md-sys-typescale-label-small-size);
+      font-weight: var(--md-sys-typescale-label-small-weight);
+      letter-spacing: var(--md-sys-typescale-label-small-tracking);
+      text-transform: uppercase;
+      color: var(--md-sys-color-on-surface);
+      margin: 0 0 var(--md-sys-spacing-2);
+      padding-bottom: var(--md-sys-spacing-2);
+      border-bottom: 1px solid var(--md-sys-color-outline);
+    }
+
+    .ingredient-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .ingredient {
+    display: flex;
+    align-items: baseline;
+    gap: var(--md-sys-spacing-2);
+    padding: var(--md-sys-spacing-2) 0;
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+    font-family: var(--md-sys-typescale-body-large-font);
+    font-size: var(--md-sys-typescale-body-large-size);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .ingredient-amount {
+      flex-shrink: 0;
+      min-width: var(--md-sys-spacing-20);
+      font-family: var(--md-sys-typescale-title-small-font);
+      font-size: var(--md-sys-typescale-title-small-size);
+      font-weight: var(--md-sys-typescale-title-small-weight);
+      color: var(--md-sys-color-on-surface);
+    }
+
+    .ingredient-name {
+      color: var(--md-sys-color-on-surface);
+    }
+  }
+}
+
+.recipe-meta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--md-sys-spacing-3);
+  margin: var(--md-sys-spacing-8) 0 var(--md-sys-spacing-12);
+
+  @include for-tablet-up {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--md-sys-spacing-4);
+  }
+
+  .meta-item {
+    border: 1px solid var(--md-sys-color-outline);
+    border-radius: var(--md-sys-shape-corner-small);
+    padding: var(--md-sys-spacing-4) var(--md-sys-spacing-3);
+    text-align: center;
+
+    .meta-label {
+      display: block;
+      font-family: var(--md-sys-typescale-label-small-font);
+      font-size: var(--md-sys-typescale-label-small-size);
+      font-weight: var(--md-sys-typescale-label-small-weight);
+      letter-spacing: var(--md-sys-typescale-label-small-tracking);
+      text-transform: uppercase;
+      color: var(--md-sys-color-on-surface);
+      margin-bottom: var(--md-sys-spacing-2);
+    }
+
+    .meta-value {
+      display: block;
+      font-family: var(--md-sys-typescale-title-medium-font);
+      font-size: var(--md-sys-typescale-title-medium-size);
+      font-weight: var(--md-sys-typescale-title-medium-weight);
+      color: var(--md-sys-color-on-surface);
+    }
+  }
+}

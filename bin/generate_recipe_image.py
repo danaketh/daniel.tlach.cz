@@ -24,49 +24,27 @@ import sys
 import pathlib
 import textwrap
 
-import requests
+import base64
+
 import frontmatter
 from openai import OpenAI
+from dotenv import load_dotenv
 
 # ── Configuration ────────────────────────────────────────────────────────────
 
 IMAGE_FILENAME = "cover.jpg"
-IMAGE_SIZE     = "1792x1024"   # landscape, good for hero / thumbnail
-IMAGE_QUALITY  = "hd"          # "standard" is cheaper; "hd" is sharper
-IMAGE_STYLE    = "natural"     # "vivid" for dramatic, "natural" for realistic
+IMAGE_SIZE     = "1536x1024"   # landscape, good for hero / thumbnail
+IMAGE_QUALITY  = "high"        # "low" | "medium" | "high"
 
 
 # ── Prompt builder ───────────────────────────────────────────────────────────
 
 SYSTEM_PROMPT_TEMPLATE = textwrap.dedent("""\
-    Professional food photography of {title}.
-    Hero ingredients visible: {ingredients}.
-    Shot style: overhead or 45-degree angle, dark moody background,
-    natural side-lighting, shallow depth of field, rustic tableware,
-    garnished and styled for a food magazine cover.
-    No text, no watermarks, photorealistic, high resolution.
+    {prompt}
 """)
 
-def extract_ingredients(text: str) -> list[str]:
-    """Pull ingredient names from Hugo shortcode content."""
-    # Match {{< ingredient qty="…" unit="…" >}}NAME{{< /ingredient >}}
-    # The ingredient name is the inner text (strip surrounding whitespace).
-    pattern = r'\{\{<\s*ingredient[^>]*>\}\}(.*?)\{\{<\s*/ingredient\s*>\}\}'
-    matches = re.findall(pattern, text, re.DOTALL)
-    names = []
-    for m in matches:
-        name = m.strip()
-        # Keep only the main part before parentheses / commas for brevity
-        name = re.split(r'[,(]', name)[0].strip()
-        if name and name not in names:
-            names.append(name)
-    return names
-
-
-def build_prompt(title: str, ingredients: list[str]) -> str:
-    top = ingredients[:8]  # don't overcrowd the prompt
-    ing_str = ", ".join(top) if top else "the key ingredients"
-    return SYSTEM_PROMPT_TEMPLATE.format(title=title, ingredients=ing_str)
+def build_prompt(prompt: str) -> str:
+    return SYSTEM_PROMPT_TEMPLATE.format(prompt=prompt)
 
 
 # ── Hugo front matter helpers ─────────────────────────────────────────────────
@@ -80,11 +58,19 @@ def save_post(post, path: pathlib.Path):
         frontmatter.dump(post, f)
 
 
-def patch_thumbnail(md_path: pathlib.Path, thumbnail_value: str):
+def slugify(text: str) -> str:
+    text = text.lower()
+    text = re.sub(r"[^\w\s-]", "", text)
+    text = re.sub(r"[\s_]+", "-", text)
+    return re.sub(r"-+", "-", text).strip("-")
+
+
+def patch_post_meta(md_path: pathlib.Path, slug: str, thumbnail_value: str):
     post = load_post(md_path)
+    post["slug"] = slug
     post["thumbnail"] = thumbnail_value
     save_post(post, md_path)
-    print(f"  patched thumbnail in {md_path.name}")
+    print(f"  patched slug + thumbnail in {md_path.name}")
 
 
 # ── Image generation ─────────────────────────────────────────────────────────
@@ -92,21 +78,18 @@ def patch_thumbnail(md_path: pathlib.Path, thumbnail_value: str):
 def generate_image(prompt: str, out_path: pathlib.Path):
     client = OpenAI()  # reads OPENAI_API_KEY from environment
 
-    print("Sending request to DALL-E 3 …")
+    print("Sending request to OpenAI …")
     response = client.images.generate(
-        model="dall-e-3",
+        model="gpt-image-1",
         prompt=prompt,
         size=IMAGE_SIZE,
         quality=IMAGE_QUALITY,
-        style=IMAGE_STYLE,
         n=1,
     )
 
-    image_url = response.data[0].url
-    print(f"Image URL: {image_url}")
-
-    print(f"Downloading → {out_path} …")
-    img_data = requests.get(image_url, timeout=60).content
+    img_b64 = response.data[0].b64_json
+    print(f"Saving → {out_path} …")
+    img_data = base64.b64decode(img_b64)
     out_path.write_bytes(img_data)
     print(f"Saved {len(img_data) // 1024} KB")
 
@@ -117,6 +100,8 @@ def main():
     if len(sys.argv) < 2:
         print(__doc__)
         sys.exit(1)
+
+    load_dotenv()
 
     recipe_dir = pathlib.Path(sys.argv[1]).resolve()
     if not recipe_dir.is_dir():
@@ -135,34 +120,27 @@ def main():
     print(f"Reading: {en_file}")
     post        = load_post(en_file)
     title       = post.get("title", recipe_dir.name)
-    ingredients = extract_ingredients(post.content)
-
+    cover_prompt = post.get("cover_prompt")
     print(f"Title      : {title}")
-    print(f"Ingredients: {ingredients[:8]}")
-
-    prompt = build_prompt(title, ingredients)
+    prompt = build_prompt(cover_prompt)
     print(f"\nPrompt:\n{prompt}")
 
     cover_path = recipe_dir / IMAGE_FILENAME
     generate_image(prompt, cover_path)
 
-    # Hugo page-bundle path relative to content root: /blog/YYYY-slug/cover.jpg
-    # We derive it by finding the "content" ancestor directory.
-    try:
-        content_root = next(
-            p for p in recipe_dir.parents if p.name == "content"
-        )
-        rel = cover_path.relative_to(content_root)
-        thumbnail_value = "/" + rel.as_posix()
-    except StopIteration:
-        # Fallback: just use the filename
-        thumbnail_value = f"/{IMAGE_FILENAME}"
+    # Derive slug and thumbnail path matching the Hugo permalink format:
+    # /blog/YYYY-MM-DD-{slug}/cover.jpg
+    date_val = post.get("date")
+    date_str = date_val.strftime("%Y-%m-%d") if hasattr(date_val, "strftime") else str(date_val)[:10]
+    slug = slugify(title)
+    thumbnail_value = f"/blog/{date_str}-{slug}/{IMAGE_FILENAME}"
 
-    print(f"\nThumbnail path: {thumbnail_value}")
+    print(f"\nSlug           : {slug}")
+    print(f"Thumbnail path : {thumbnail_value}")
 
     # Patch all language variants
     for md_file in sorted(recipe_dir.glob("index.*.md")):
-        patch_thumbnail(md_file, thumbnail_value)
+        patch_post_meta(md_file, slug, thumbnail_value)
 
     print("\nDone.")
 

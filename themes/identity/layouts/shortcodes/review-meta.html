@@ -1,0 +1,10 @@
+<dl class="review-meta">
+    {{ with .Get "genre" }}<div><dt>Genre</dt><dd>{{ . }}</dd></div>{{ end }}
+    {{ with .Get "year" }}<div><dt>Year</dt><dd>{{ . }}</dd></div>{{ end }}
+    {{ with .Get "developer" }}<div><dt>Developer</dt><dd>{{ . }}</dd></div>{{ end }}
+    {{ with .Get "director" }}<div><dt>Director</dt><dd>{{ . }}</dd></div>{{ end }}
+    {{ with .Get "platform" }}<div><dt>Platform</dt><dd>{{ . }}</dd></div>{{ end }}
+    {{ with .Get "studio" }}<div><dt>Studio</dt><dd>{{ . }}</dd></div>{{ end }}
+    {{ with .Get "duration" }}<div><dt>Duration</dt><dd>{{ . }}</dd></div>{{ end }}
+    {{ with .Get "players" }}<div><dt>Players</dt><dd>{{ . }}</dd></div>{{ end }}
+</dl>

@@ -1,0 +1,9 @@
+{{ $qty := .Get "qty" }}{{ $unit := .Get "unit" | default "" -}}
+<li class="ingredient"{{ if $qty }} data-qty="{{ $qty }}" data-unit="{{ $unit }}"{{ end }}>
+  {{ if $qty -}}
+  <span class="ingredient-amount">
+    <span class="ingredient-qty">{{ $qty }}</span>{{ if $unit }}<span class="ingredient-unit"> {{ $unit }}</span>{{ end }}
+  </span>
+  {{- end }}
+  <span class="ingredient-name">{{ .Inner | strings.TrimSpace }}</span>
+</li>
