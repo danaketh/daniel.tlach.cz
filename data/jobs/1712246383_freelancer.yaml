@@ -1,5 +1,5 @@
-title: Software Firefighter
-company: Freelancer
+title: Fullstack Developer
+company: Freelance
 website: 'https://daniel.tlach.cz'
 resume: true
 range:
@@ -11,7 +11,9 @@ description: >
   ([Sapho](https://techcrunch.com/2018/11/15/citrix-pays-200m-to-acquire-sapho-which-connects-legacy-software-with-micro-apps/),
   [Instart](https://www.akamai.com/newsroom/press-release/akamai-technologies-acquires-customers-and-select-intellectual-property-from-instart)),
   startups backed by large corporations ([HoppyGo](https://www.hoppygo.cz)), large companies ([ACTUM Digital](https://www.actumdigital.com/),
-  [CEEOR](https://www.web.ceeor.com/), [QED GROUP](https://www.qedgroup.cz/)), and even government organization ([Czech Science Foundation](https://www.gacr.cz/)).
+  [CEEOR](https://www.web.ceeor.com/), [QED GROUP](https://www.qedgroup.cz/), [Pelmet s.r.o.](https://www.pelmet.eu/)),
+  agencies ([MeguMethod](https://www.megumethod.com/)),
+  and even government organization ([Czech Science Foundation](https://www.gacr.cz/)).
   
   I've worked on a wide range of projects, from small websites to large-scale applications, and have gained experience
   in various technologies and frameworks.
@@ -28,4 +30,6 @@ technologies:
   - AWS
   - Azure
   - Kubernetes
+  - MySQL
+  - MongoDB
 weight: 100
