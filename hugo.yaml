@@ -14,7 +14,8 @@ params:
   twitter: "danaketh"
   github: "danaketh"
   npm: "danaketh"
-  linkedin: "danieltlach"
+  linkedin: "in/danieltlach"
+  resumeURL: "https://github.com/danaketh/daniel.tlach.cz/releases/latest"
 
 menu:
   main:
@@ -68,9 +69,6 @@ permalinks:
 
 defaultContentLanguage: en
 languages:
-  cs:
-    languageName: Česky
-    weight: 3
   en:
     languageName: English
     weight: 1

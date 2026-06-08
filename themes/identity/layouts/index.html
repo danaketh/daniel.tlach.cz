@@ -8,6 +8,9 @@
 <main class="container curriculum-vitae">
     <section role="article">
         {{ .Content }}
+        {{ with .Site.Params.resumeURL }}
+        <a href="{{ . }}" class="cv-download" rel="noopener" target="_blank">Download CV</a>
+        {{ end }}
     </section>
 
     <section class="cv-block" role="list">

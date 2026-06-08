@@ -7,7 +7,7 @@ params:
 # Hi, I’m Daniel
 
 {{< intro >}}
-Versatile software engineer with over 20 years of hands-on experience spanning web applications, backend systems, infrastructure automation, and data-driven platforms. Proven track record across startups, enterprise environments, and freelance projects. I combine strong backend expertise with a curiosity-driven mindset, resulting in elegant, scalable, and secure solutions. Fan of clean code, tea, LEGO, and lifelong learning.
+Software engineer with 20+ years across startups, enterprise, and freelance. Backend-focused — Go, PHP, Python — with enough frontend to own a feature end to end. Most recently on identity and access governance at Microsoft. I like clean systems, strong tea, and LEGO.
 {{< /intro >}}
 
 {{< cv-block >}}

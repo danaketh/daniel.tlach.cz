@@ -35,8 +35,7 @@
         <meta property="og:type" content="website"/>
     {{ end }}
 
-    <!-- Hugo Version number -->
-    {{ hugo.Generator -}}
+    {{ if .Params.noindex }}<meta name="robots" content="noindex, nofollow">{{ end }}
 
     {{- with .Site.Params.favicon }}
         <link rel='icon' type='image/x-icon' href="{{ . | absURL }}"/>
