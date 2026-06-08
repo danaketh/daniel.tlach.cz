@@ -1,0 +1,19 @@
+title: Chief Technology Officer
+company: ShopArt s.r.o.
+type: contract
+range:
+  start: 2008-07-01T00:00:00.000Z
+  end: 2011-12-01T00:00:00.000Z
+description: >
+  Designed and built a proprietary CMS enabling rapid creation and maintenance
+  of client websites. Led all technical direction and managed Linux server
+  infrastructure.
+technologies:
+  - Symfony
+  - PostgreSQL
+  - MySQL
+  - Python
+  - JavaScript
+  - Linux
+  - PHP
+weight: 3

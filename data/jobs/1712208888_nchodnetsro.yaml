@@ -1,12 +1,13 @@
 title: Network Engineer
 company: Náchod.NET s.r.o.
+type: employment
 resume: true
 range:
   start: 2005-05-01T00:00:00.000Z
   end: 2006-09-01T00:00:00.000Z
 description: >
-  Connecting clients, monitoring the network, building new access points,
-  providing customer care.
+  Deployed and managed network infrastructure for a regional ISP — connecting
+  clients, building access points, and monitoring uptime.
 technologies:
   - Linux
   - Cacti

@@ -2,11 +2,6 @@ name: Build and Release Resume
 
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'Version tag for the release (e.g., v1.0.0 or 2024.07.19)'
-        required: true
-        type: string
 
 permissions:
   contents: write
@@ -16,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Set version from date
+        id: version
+        run: echo "tag=$(date +%Y.%m.%d)" >> $GITHUB_OUTPUT
+
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -42,12 +41,17 @@ jobs:
           root_file: resume_full.tex
           working_directory: resume
 
+      - name: Rename PDFs
+        run: |
+          mv resume/resume.pdf "resume/Daniel_Tlach_Resume_${{ steps.version.outputs.tag }}.pdf"
+          mv resume/resume_full.pdf "resume/Daniel_Tlach_Resume_Full_${{ steps.version.outputs.tag }}.pdf"
+
       - name: Release regular PDF
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.event.inputs.version }}
-          name: Resume (regular) ${{ github.event.inputs.version }}
-          files: resume/resume.pdf
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: Resume ${{ steps.version.outputs.tag }}
+          files: resume/Daniel_Tlach_Resume_${{ steps.version.outputs.tag }}.pdf
           draft: false
           prerelease: false
         env:
@@ -56,9 +60,9 @@ jobs:
       - name: Release full PDF
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.event.inputs.version }}
-          name: Resume (full) ${{ github.event.inputs.version }}
-          files: resume/resume_full.pdf
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: Resume Full ${{ steps.version.outputs.tag }}
+          files: resume/Daniel_Tlach_Resume_Full_${{ steps.version.outputs.tag }}.pdf
           draft: false
           prerelease: false
         env:

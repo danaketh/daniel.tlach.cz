@@ -1,0 +1,21 @@
+title: Senior Backend Developer
+company: HoppyGo s.r.o.
+website: 'https://www.hoppygo.com/'
+type: contract
+range:
+  start: 2020-10-01T00:00:00.000Z
+  end: 2023-11-01T00:00:00.000Z
+  current: false
+description: >
+  Backend developer for HoppyGo, a VC-backed car-sharing platform operating across the Czech Republic and Slovakia.
+  Delivered new backend features, optimized performance-critical code paths, and collaborated with the frontend
+  team on API design and integration.
+technologies:
+  - Redis
+  - AWS
+  - PostgreSQL
+  - Docker
+  - Symfony
+  - PHP
+weight: 17
+resume: true

@@ -1,17 +1,13 @@
 title: Owner
 company: 'danaketh, s.r.o.'
+type: employment
 range:
   start: 2017-10-01T00:00:00.000Z
   current: true
 description: >
-  I've started my own company to offload some of my personal projects elsewhere
-  and keep them under a single roof
-
-  but still separate from my freelance work. Here I do things like building
-  computer networks, computers, server
-
-  management and also work on long-term projects which are also my hobby (mostly
-  a sort of wikipedia about sharks).
+  Founded to house personal projects and consulting work separate from client engagements.
+  Activities include custom network builds, server management, and long-term open-source
+  and hobby projects.
 technologies:
   - PostgreSQL
   - SASS

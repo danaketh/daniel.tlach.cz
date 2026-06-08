@@ -1,0 +1,19 @@
+title: Senior Software Developer
+company: QED GROUP a.s.
+website: 'https://www.qedgroup.cz/'
+type: contract
+range:
+  start: 2020-03-01T00:00:00.000Z
+  end: 2024-03-01T00:00:00.000Z
+description: |
+  Architected and delivered the next-generation version of an in-house personality testing platform. Designed
+  the backend in Symfony, built the React/SASS frontend, and deployed the system on Nomad/Kubernetes
+  backed by PostgreSQL.
+technologies:
+  - PHP
+  - SASS
+  - React
+  - Symfony
+  - PostgreSQL
+weight: 13
+resume: true

@@ -1,5 +1,6 @@
 title: Fullstack Developer
 company: Freelance
+type: overview
 website: 'https://daniel.tlach.cz'
 resume: true
 range:
@@ -15,8 +16,7 @@ description: >
   agencies ([MeguMethod](https://www.megumethod.com/)),
   and even government organization ([Czech Science Foundation](https://www.gacr.cz/)).
   
-  I've worked on a wide range of projects, from small websites to large-scale applications, and have gained experience
-  in various technologies and frameworks.
+  From small marketing sites to large-scale distributed systems, I've shipped production software across every layer of the stack.
 technologies:
   - Go
   - PHP

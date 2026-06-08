@@ -1,0 +1,15 @@
+title: Senior Software Developer
+company: CEEOR s.r.o.
+website: 'https://www.web.ceeor.com/'
+type: contract
+range:
+  start: 2015-06-01T00:00:00.000Z
+  end: 2015-09-01T00:00:00.000Z
+description: >
+  Built an in-house survey system and led the migration of the company's entire
+  codebase from SVN to Git.
+technologies:
+  - MySQL
+  - JavaScript
+  - PHP
+weight: 10

@@ -1,12 +1,13 @@
 title: Software Developer
 company: 'MepaTEK Software, spol. s r.o.'
+type: contract
 website: 'https://www.mepatek.cz/'
 resume: true
 range:
   start: 2010-11-01T00:00:00.000Z
   end: 2011-01-01T00:00:00.000Z
 description: |
-  Development of the in-house CMS, managing client websites.
+  Developed and maintained an in-house CMS, managing deployments for multiple client websites.
 technologies:
   - MySQL
   - JavaScript

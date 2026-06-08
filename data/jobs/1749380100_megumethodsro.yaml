@@ -1,0 +1,15 @@
+title: Back End Developer
+company: MeguMethod
+type: contract
+range:
+  start: 2025-11-01T00:00:00.000Z
+  end: 2026-04-01T00:00:00.000Z
+  current: false
+description: >
+  Built microservices for a fintech client, delivered via MeguMethod agency.
+technologies:
+  - TypeScript
+  - Docker
+  - PostgreSQL
+weight: 20
+resume: true

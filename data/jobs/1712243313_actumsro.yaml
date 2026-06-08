@@ -1,0 +1,14 @@
+title: Software Developer
+company: Actum s.r.o.
+website: 'https://www.actumdigital.com/'
+type: contract
+range:
+  start: 2014-07-01T00:00:00.000Z
+  end: 2014-09-01T00:00:00.000Z
+description: |
+  Developed custom Magento extensions and delivered new features for the agency's e-commerce clients.
+technologies:
+  - Magento
+  - MySQL
+  - PHP
+weight: 8

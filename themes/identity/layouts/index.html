@@ -11,8 +11,15 @@
     </section>
 
     <section class="cv-block" role="list">
-        <h2 id="professional-experience">Professional Experience</h2>
-        {{ range sort $.Site.Data.jobs "weight" "desc" }}
+        <h2 id="employment">Employment</h2>
+        {{ range where (sort $.Site.Data.jobs "weight" "desc") ".type" "employment" }}
+            {{ partial "job" . }}
+        {{ end }}
+    </section>
+
+    <section class="cv-block" role="list">
+        <h2 id="freelance">Freelance</h2>
+        {{ range where (sort $.Site.Data.jobs "weight" "desc") ".type" "contract" }}
             {{ partial "job" . }}
         {{ end }}
     </section>

@@ -1,0 +1,13 @@
+title: Software Developer
+company: RED.SYSTEMS software Ltd.
+type: contract
+range:
+  start: 2014-10-01T00:00:00.000Z
+  end: 2015-05-01T00:00:00.000Z
+description: |
+  Designed and built the REST API backend for a babysitting marketplace application.
+technologies:
+  - MySQL
+  - Symfony
+  - PHP
+weight: 9

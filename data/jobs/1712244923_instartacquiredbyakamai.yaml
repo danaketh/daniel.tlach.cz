@@ -1,0 +1,19 @@
+title: Senior Web Developer
+company: Instart *acquired by Akamai*
+type: contract
+range:
+  start: 2019-02-01T00:00:00.000Z
+  end: 2020-02-01T00:00:00.000Z
+description: >
+  SF-based startup acquired by Akamai. Part of the marketing team — owned the company website,
+  integrated marketing tooling, and built custom WordPress plugins, themes, and Gutenberg blocks
+  to support the marketing team's content workflows.
+technologies:
+  - React
+  - WP Engine
+  - MySQL
+  - WordPress
+  - PHP
+  - SASS
+weight: 12
+resume: true

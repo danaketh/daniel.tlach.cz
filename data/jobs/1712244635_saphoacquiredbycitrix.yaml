@@ -1,0 +1,20 @@
+title: Web Developer
+company: Sapho *acquired by Citrix*
+type: contract
+range:
+  start: 2015-10-01T00:00:00.000Z
+  end: 2019-02-01T00:00:00.000Z
+description: >
+  SF-based startup acquired by Citrix for $200M. Sole developer on the marketing team — owned the full
+  company website, integrated marketing tooling (HubSpot), and built a hardened custom WordPress setup
+  with targeted mitigations against common web vulnerabilities.
+technologies:
+  - HubSpot
+  - SASS
+  - React
+  - WP Engine
+  - MySQL
+  - WordPress
+  - PHP
+weight: 11
+resume: true

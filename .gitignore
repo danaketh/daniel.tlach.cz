@@ -37,3 +37,6 @@ resume/*.*
 !resume/resume.tex
 !resume/resume_full.tex
 !resume/developercv.cls
+
+# Python
+__pycache__

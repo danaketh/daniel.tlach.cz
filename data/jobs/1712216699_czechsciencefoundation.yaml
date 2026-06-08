@@ -1,0 +1,19 @@
+title: 'Software Developer, Database Administrator'
+company: Czech Science Foundation
+website: 'https://gacr.cz/en/'
+type: contract
+range:
+  start: 2011-09-01T00:00:00.000Z
+  end: 2014-06-01T00:00:00.000Z
+description: >
+  Built data pipelines to exchange grant data between government agencies,
+  developed internal tooling for querying the IS VaVaI research database,
+  and provided IT support across departments.
+technologies:
+  - Microsoft SQL Server
+  - Linux
+  - XML
+  - Python
+  - JavaScript
+  - PHP
+weight: 7

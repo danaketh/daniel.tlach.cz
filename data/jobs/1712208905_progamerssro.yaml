@@ -1,14 +1,15 @@
 title: 'Web Developer, Server Administrator'
 company: ProGamers s.r.o.
+type: employment
 website: 'http://www.progamers.cz/'
 resume: true
 range:
   start: 2007-04-01T00:00:00.000Z
   end: 2008-07-01T00:00:00.000Z
 description: >
-  Maintaining Linux servers and developing PG24.TV website, which provided
-  gaming streams. Functionality included archive browser, live streaming
-  indicator, live chat, and much more.
+  Built and maintained PG24.TV, a gaming streaming platform featuring live
+  stream feeds, archive browsing, and live chat. Managed the underlying Linux
+  server infrastructure.
 technologies:
   - MySQL
   - JavaScript

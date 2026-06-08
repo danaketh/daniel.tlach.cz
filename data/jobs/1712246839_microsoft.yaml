@@ -1,15 +1,15 @@
 title: Software Engineer
 company: Microsoft
+type: employment
 website: 'https://www.microsoft.com/'
 range:
   start: 2024-04-01T00:00:00.000Z
   end: 2025-06-30T00:00:00.000Z
   current: false
 description: |
-  As a part of the Identity team I've been working on providing support to our customers with their Kusto clusters.
-  I've started and participated on a project to improve access governance on Kusto clusters, which included changes
-  like requiring periodical access renewal, or better organization and control over granted permissions. Currently
-  I'm involved in a project which provides a high-level tooling for managing Kusto clusters.
+  Member of the Identity team focused on Kusto cluster governance and tooling. Drove an access governance
+  initiative enforcing periodic access renewal and structured permission management across clusters.
+  Built high-level cluster management tooling used by internal teams and enterprise customers.
 technologies:
   - Blazor
   - .NET

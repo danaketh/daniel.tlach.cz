@@ -6,8 +6,10 @@ Usage:
     python bin/prepare_resume.py
 
 Reads all .yaml files from data/jobs/ (sorted descending by filename) and writes:
-  resume/experience.tex       — jobs with resume: true only
-  resume/experience_full.tex  — all jobs
+  resume/employment.tex       — employment jobs with resume: true
+  resume/employment_full.tex  — all employment jobs
+  resume/freelance.tex        — contract jobs with resume: true
+  resume/freelance_full.tex   — all contract jobs
 
 Requires:
     pip install -r requirements.txt
@@ -88,14 +90,43 @@ def load_jobs(jobs_dir: pathlib.Path) -> list[dict]:
     return jobs
 
 
+def partition_jobs(jobs: list[dict]) -> tuple[list[dict], list[dict]]:
+    """Split jobs into (employment, contracts) by the 'type' field.
+
+    'overview' entries are excluded from both lists.
+    Jobs without a type field default to 'employment'.
+    """
+    employment, contracts = [], []
+    for job in jobs:
+        job_type = job.get("type", "employment")
+        if job_type == "overview":
+            continue
+        if job_type == "contract":
+            contracts.append(job)
+        else:
+            employment.append(job)
+    return employment, contracts
+
+
+def sort_by_weight(jobs: list[dict]) -> list[dict]:
+    """Sort jobs descending by weight."""
+    return sorted(jobs, key=lambda j: j.get("weight", 0), reverse=True)
+
+
 # ── LaTeX generation ──────────────────────────────────────────────────────────
 
-def generate_experience(jobs: list[dict], *, resume_only: bool) -> str:
+def generate_experience(jobs: list[dict], *, resume_only: bool, limit: int | None = None) -> str:
     """Render jobs as a sequence of \\entry blocks for a LaTeX resume."""
     lines = []
+    count = 0
     for job in jobs:
         if resume_only and not job.get("resume", False):
             continue
+        if limit is not None and count >= limit:
+            break
+        count += 1
+        if job.get("pagebreak_before", False):
+            lines.append("\\pagebreak")
 
         date_range = job.get("range") or {}
         start = date_range.get("start")
@@ -142,12 +173,21 @@ def main():
         sys.exit(1)
 
     jobs = load_jobs(jobs_dir)
+    employment, contracts = partition_jobs(jobs)
+    employment = sort_by_weight(employment)
+    contracts = sort_by_weight(contracts)
 
-    (resume_dir / "experience.tex").write_text(
-        generate_experience(jobs, resume_only=True), encoding="utf-8"
+    (resume_dir / "employment.tex").write_text(
+        generate_experience(employment, resume_only=True, limit=1), encoding="utf-8"
     )
-    (resume_dir / "experience_full.tex").write_text(
-        generate_experience(jobs, resume_only=False), encoding="utf-8"
+    (resume_dir / "employment_full.tex").write_text(
+        generate_experience(employment, resume_only=False), encoding="utf-8"
+    )
+    (resume_dir / "freelance.tex").write_text(
+        generate_experience(contracts, resume_only=True, limit=3), encoding="utf-8"
+    )
+    (resume_dir / "freelance_full.tex").write_text(
+        generate_experience(contracts, resume_only=False), encoding="utf-8"
     )
 
     print("LaTeX files generated successfully!")
