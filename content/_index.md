@@ -13,7 +13,7 @@ Software engineer with 20+ years across startups, enterprise, and freelance. Bac
 {{< cv-block >}}
 ## Core skills
 
-- **Languages:** Go, PHP (Symfony), Python, Rust, TypeScript (React)
+- **Languages:** Go, PHP (Symfony), Python, Rust, TypeScript (React, Vue.js)
 - **Databases:** PostgreSQL, MySQL, Microsoft SQL Server, Redis, CouchDB
 - **DevOps:** Docker, K8S/Nomad, Git, CI/CD, AWS, Azure
 - **Tools:** Blazor, Kusto, ElasticSearch, Hugo, Gatsby, WordPress
