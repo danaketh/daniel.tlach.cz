@@ -10,6 +10,7 @@ description: >
   to support the marketing team's content workflows.
 technologies:
   - React
+  - Vue.js
   - WP Engine
   - MySQL
   - WordPress
